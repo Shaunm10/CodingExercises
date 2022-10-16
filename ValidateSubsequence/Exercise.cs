@@ -19,10 +19,10 @@ namespace CodingExercies.ValidateSubsequence
 
                 if (index > sequenceIndex)
                 {
-                    // this is a valid sequency
-                    // record the new index number
                     sequenceIndex = index;
-                } else{
+                }
+                else
+                {
                     isSequence = false;
                 }
             }
