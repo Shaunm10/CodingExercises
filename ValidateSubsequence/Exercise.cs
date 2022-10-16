@@ -15,9 +15,10 @@ namespace CodingExercies.ValidateSubsequence
             // iterate over the values of the candidate sequence
             foreach (var number in sequence)
             {
-                var index = array.IndexOf(number);
+                //var index = array.IndexOf(number);
+                var index = array.IndexOf(number, sequenceIndex + 1);
 
-                if (index > sequenceIndex)
+                if (index != -1 && index >= sequenceIndex)
                 {
                     sequenceIndex = index;
                 }
