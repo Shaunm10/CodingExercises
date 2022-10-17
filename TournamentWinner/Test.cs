@@ -5,7 +5,7 @@ namespace CodingExercises.TournamentWinner
 {
     public class Test
     {
-         [Fact]
+        [Fact]
         public void Sample_Test()
         {
             // arrange:
@@ -15,7 +15,7 @@ namespace CodingExercises.TournamentWinner
                 new List<string>{"Python","HTML"}
               };
 
-            var results = new List<int>{0,0,1};
+            var results = new List<int> { 0, 0, 1 };
             var expectedOutcome = "Python";
 
             // act:

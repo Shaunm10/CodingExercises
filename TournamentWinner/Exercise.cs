@@ -34,6 +34,7 @@ namespace CodingExercises.TournamentWinner
 
             for (var i = 0; i < competitions.Count; i++)
             {
+                var numberOfPointsForWinning = 3;
                 var currentMatch = competitions[i];
                 var didHomeTimeWin = results[i] == 1;
                 var winningLanguage = "";
@@ -54,7 +55,7 @@ namespace CodingExercises.TournamentWinner
                 else
                 {
                     //insert
-                    languagePoints[winningLanguage] = 3;
+                    languagePoints[winningLanguage] = numberOfPointsForWinning;
 
                 }
             }
