@@ -1,4 +1,4 @@
-namespace CodingExercies.ValidateSubsequence
+namespace CodingExercises.ValidateSubsequence
 {
     public class Exercise
     {

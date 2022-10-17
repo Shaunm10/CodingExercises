@@ -2,7 +2,7 @@ using FluentAssertions;
 using Xunit;
 
 
-namespace CodingExercies.ValidateSubsequence
+namespace CodingExercises.ValidateSubsequence
 {
     public class Tests
     {
