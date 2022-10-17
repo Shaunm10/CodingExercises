@@ -9,6 +9,7 @@ namespace CodingExercises.SortedSquaredArray
 
         public static int[] SortedSquaredArray(int[] array)
         {
+            return
             // Write your code here.
             return new int[] { };
         }
