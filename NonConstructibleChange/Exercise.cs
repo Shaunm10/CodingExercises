@@ -48,6 +48,8 @@ public class Exercise
 
     private static List<List<int>> GetPermutations(int[] coins)
     {
+        // there is flawed logic here, it doesn't account 
+        // for situations where numbers are skipped.
         var variants = new List<List<int>>();
         for (int i = 0; i < coins.Length; i++)
         {
