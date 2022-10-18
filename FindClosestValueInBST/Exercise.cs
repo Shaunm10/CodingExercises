@@ -17,8 +17,48 @@ namespace CodingExercises.FindClosestValueInBST
         */
         public static int FindClosestValueInBst(BST tree, int target)
         {
-            // Write your code here.
-            return -1;
+
+            int? leftValue = null;
+            int? rightValue = null;
+            var nodeValue = tree.value;
+            if (tree.left != null)
+            {
+
+                leftValue = FindClosestValueInBst(tree.left, target);
+            }
+            if (tree.right != null)
+            {
+
+                rightValue = FindClosestValueInBst(tree.right, target);
+            }
+
+            var nodeDifference = Math.Abs(tree.value - target);
+            var leftDifference = Math.Abs((leftValue ?? Int32.MaxValue) - target);
+            var rightDifference = Math.Abs((rightValue ?? Int32.MaxValue) - target);
+
+            // check for nodeValue
+            // if (nodeDifference < leftDifference && nodeDifference < rightDifference)
+            // {
+            //     return nodeValue;
+            // }
+
+            // check for rightValue.
+            if (
+                rightDifference < nodeDifference &&
+                rightDifference < leftDifference)
+            {
+                return rightValue.GetValueOrDefault();
+            }
+
+            // check for leftValue.
+            if (
+                leftDifference < nodeDifference &&
+                leftDifference < rightDifference)
+            {
+                return leftValue.GetValueOrDefault();
+            }
+
+            return nodeValue;
         }
     }
 }

@@ -47,7 +47,7 @@ namespace CodingExercises.FindClosestValueInBST
             };
 
             // act:
-            var answer = Exercise.FindClosestValueInBst(head, 10);
+            var answer = Exercise.FindClosestValueInBst(head, 12);
 
             // assert:
             answer.Should().Be(expectedOutput);
