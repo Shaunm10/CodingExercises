@@ -15,6 +15,13 @@ namespace CodingExercises.FindClosestValueInBST
         every node to its right; and its children nodes are either valid BST nodes themselves or None / null.
 
         */
+
+        /// <summary>
+        /// Brute Force Approach
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public static int FindClosestValueInBst(BST tree, int target)
         {
 
@@ -36,12 +43,6 @@ namespace CodingExercises.FindClosestValueInBST
             var leftDifference = Math.Abs((leftValue ?? Int32.MaxValue) - target);
             var rightDifference = Math.Abs((rightValue ?? Int32.MaxValue) - target);
 
-            // check for nodeValue
-            // if (nodeDifference < leftDifference && nodeDifference < rightDifference)
-            // {
-            //     return nodeValue;
-            // }
-
             // check for rightValue.
             if (
                 rightDifference < nodeDifference &&
@@ -60,5 +61,14 @@ namespace CodingExercises.FindClosestValueInBST
 
             return nodeValue;
         }
+
+
+        public static int FindClosestValueInBstNonBF(BST tree, int target)
+        {
+            return -1;
+        }
+
+
+
     }
 }
