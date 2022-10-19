@@ -46,7 +46,7 @@ namespace CodingExercises.FindClosestValueInBST
             };
 
             // act:
-            var answer = Exercise.FindClosestValueInBstNonBruteForce(head, 12);
+            var answer = Exercise.FindClosestValueInBst(head, 12);
 
             // assert:
             answer.Should().Be(expectedOutput);
@@ -174,7 +174,7 @@ namespace CodingExercises.FindClosestValueInBST
             };
 
             // act:
-            var answer = Exercise.FindClosestValueInBstNonBruteForce(head, 12);
+            var answer = Exercise.FindClosestValueInBst(head, 12);
 
             // assert:
             answer.Should().Be(expectedOutput);

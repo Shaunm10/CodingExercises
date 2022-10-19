@@ -22,7 +22,7 @@ namespace CodingExercises.FindClosestValueInBST
         /// <param name="tree"></param>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static int FindClosestValueInBst(BST tree, int target)
+        public static int FindClosestValueInBstBruteForce(BST tree, int target)
         {
             int? leftValue = null;
             int? rightValue = null;
@@ -65,10 +65,10 @@ namespace CodingExercises.FindClosestValueInBST
         /// <summary>
         /// Systematic approach
         /// </summary>
-        public static int FindClosestValueInBstNonBruteForce(BST tree, int target)
+        public static int FindClosestValueInBst(BST tree, int target)
         {
 
-            if (tree is null)
+            if (tree == null)
             {
                 return 99999;
             }
@@ -86,7 +86,7 @@ namespace CodingExercises.FindClosestValueInBST
 
             if (isTargetLarger)
             {   // if smaller go right
-                var closestValueRight = FindClosestValueInBstNonBruteForce(tree.right, target);
+                var closestValueRight = FindClosestValueInBst(tree.right, target);
                 var rightDifference = Math.Abs(closestValueRight - target);
 
                 if (rightDifference < currentDifference)
@@ -98,7 +98,7 @@ namespace CodingExercises.FindClosestValueInBST
             else
             {
                 // if bigger go left
-                var closestValueLeft = FindClosestValueInBstNonBruteForce(tree.left, target);
+                var closestValueLeft = FindClosestValueInBst(tree.left, target);
                 var leftDifferences = Math.Abs(closestValueLeft - target);
                 if (leftDifferences < currentDifference)
                 {
