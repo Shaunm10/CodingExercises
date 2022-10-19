@@ -6,7 +6,6 @@ namespace CodingExercises.FindClosestValueInBST
         [Fact]
         public void Test1()
         {
-
             // arrange:
             var expectedOutput = 13;
             var head = new BST
@@ -47,7 +46,7 @@ namespace CodingExercises.FindClosestValueInBST
             };
 
             // act:
-            var answer = Exercise.FindClosestValueInBst(head, 12);
+            var answer = Exercise.FindClosestValueInBstNonBruteForce(head, 12);
 
             // assert:
             answer.Should().Be(expectedOutput);
@@ -175,7 +174,7 @@ namespace CodingExercises.FindClosestValueInBST
             };
 
             // act:
-            var answer = Exercise.FindClosestValueInBst(head, 12);
+            var answer = Exercise.FindClosestValueInBstNonBruteForce(head, 12);
 
             // assert:
             answer.Should().Be(expectedOutput);
