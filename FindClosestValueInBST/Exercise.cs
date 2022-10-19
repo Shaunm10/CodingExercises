@@ -40,8 +40,8 @@ namespace CodingExercises.FindClosestValueInBST
             }
 
             var nodeDifference = Math.Abs(tree.value - target);
-            var leftDifference = Math.Abs((leftValue ?? Int32.MaxValue) - target);
-            var rightDifference = Math.Abs((rightValue ?? Int32.MaxValue) - target);
+            var leftDifference = Math.Abs((leftValue ?? 9999999) - target);
+            var rightDifference = Math.Abs((rightValue ?? 9999999) - target);
 
             // check for rightValue.
             if (
@@ -63,12 +63,13 @@ namespace CodingExercises.FindClosestValueInBST
         }
 
 
+        /// <summary>
+        /// Systematic approach
+        /// </summary>
         public static int FindClosestValueInBstNonBF(BST tree, int target)
         {
             return -1;
         }
-
-
 
     }
 }
