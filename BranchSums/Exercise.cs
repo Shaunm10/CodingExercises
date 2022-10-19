@@ -14,10 +14,27 @@ namespace CodingExercises.BranchSums
         */
         public static List<int> BranchSums(BinaryTree root)
         {
+            var returnList = new List<int>();
 
-            // Write your code here.
-            return new List<int>();
+            // is this node a leaf?
+            if (root.left == null && root.right == null)
+            {
+                return new List<int> { root.value };
+            }
+
+
+            if (root.left != null)
+            {
+                var leftList = BranchSums(root.left);
+                returnList.AddRange(leftList.Select(x => x + root.value));
+            }
+            if (root.right != null)
+            {
+                var rightList = BranchSums(root.right);
+                returnList.AddRange(rightList.Select(x => x + root.value));
+            }
+
+            return returnList;
         }
-
     }
 }

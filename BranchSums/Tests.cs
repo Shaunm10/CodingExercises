@@ -2,6 +2,7 @@ namespace CodingExercises.BranchSums
 {
     public class Tests
     {
+        [Fact]
         public void Test1()
         {
             // arrange:
@@ -51,9 +52,9 @@ namespace CodingExercises.BranchSums
 
             // act:
             var result = Exercise.BranchSums(targetTree);
-            result.Should().ContainInOrder(expectedOutput);
 
             // assert:
+            result.Should().ContainInOrder(expectedOutput);
         }
     }
 }
