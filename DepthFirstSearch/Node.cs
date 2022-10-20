@@ -22,12 +22,29 @@ namespace CodingExercises.DepthFirstSearch
             this.name = name;
         }
 
+        public List<string> DepthFirstSearchLinq(List<string> array)
+        {
+            var nodeNames = new List<string>();
+            nodeNames.Add(this.name);
+
+            this.children.ForEach(x => nodeNames.AddRange(x.DepthFirstSearchLinq(array)));
+
+            return nodeNames;
+        }
         public List<string> DepthFirstSearch(List<string> array)
         {
             var nodeNames = new List<string>();
             nodeNames.Add(this.name);
 
-            this.children.ForEach(x => nodeNames.AddRange(x.DepthFirstSearch(array)));
+            for (var i = 0; i < this.children.Count(); i++)
+            {
+                var childNodeNames = this.children[i].DepthFirstSearch(array);
+
+                for (int chi = 0; chi < childNodeNames.Count(); chi++)
+                {
+                    nodeNames.Add(childNodeNames[chi]);
+                }
+            }
 
             return nodeNames;
         }
