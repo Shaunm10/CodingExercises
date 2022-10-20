@@ -44,7 +44,7 @@ namespace CodingExercises.NodeDepths
             if (node.right == null && node.left == null)
             {
                 returnNodes.Add(currentNodeLevel);
-                return returnNodes
+                return returnNodes;
             }
 
             if (node.left != null)
