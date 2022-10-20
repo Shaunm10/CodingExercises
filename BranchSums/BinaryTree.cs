@@ -8,7 +8,7 @@ namespace CodingExercises.BranchSums
 
         public BinaryTree()
         {
-
+            this.value =0;
         }
 
         public BinaryTree(int value)
