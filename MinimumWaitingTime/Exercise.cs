@@ -24,8 +24,26 @@ namespace CodingExercises.MinimumWaitingTime
         public static int MinimumWaitingTime(int[] queries)
         {
             // Write your code here.
-            return -1;
-        }
+            var orderedQueriesTimes = queries.OrderBy(x => x).ToList();
 
+            //var timeAmount = 0;
+            var times = new List<int>();
+            times.Add(0);
+            for (var i = 0; i < orderedQueriesTimes.Count(); i++)
+            {
+                // skipping the first one.
+                if (i != 0)
+                {
+                    var previousQueryTimeToAdd = orderedQueriesTimes[i - 1];
+                    var previousTimesSummed = times.Sum(x => x);
+                    var amountToAdd = orderedQueriesTimes.Wher e((val,inx) => i);
+                    times.Add(amountToAdd);
+                    // var amountToAdd = previousQueryTimeToAdd + timeAmount;
+                    //timeAmount = timeAmount + amountToAdd;
+                }
+            }
+            // orderedQueriesTimes.Aggregate(0,(accum, next,) => accum + next )
+            return times.Sum(x => x);
+        }
     }
 }
