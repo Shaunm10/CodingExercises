@@ -27,9 +27,37 @@ namespace CodingExercises.ClassPhotos
     {
         public bool ClassPhotos(List<int> redShirtHeights, List<int> blueShirtHeights)
         {
-            // Write your code here.
-            return false;
-        }
+            var isClassPhotoValid = true;
 
+            // if the lists aren't the same s
+            if (redShirtHeights.Count() != blueShirtHeights.Count())
+            {
+                isClassPhotoValid = false;
+                return isClassPhotoValid;
+            }
+
+            if (redShirtHeights.Count() == 1)
+            {
+                if (redShirtHeights[0] == blueShirtHeights[0])
+                {
+                    isClassPhotoValid = false;
+                }
+            }
+
+            var isBlueHigher = blueShirtHeights[0] > redShirtHeights[0];
+            for (int i = 0; i < redShirtHeights.Count(); i++)
+            {
+                var redStudentHeight = redShirtHeights[i];
+                var blueStudentHeight = blueShirtHeights[i];
+                var isThisBlueStudentTaller = blueStudentHeight > redStudentHeight;
+
+                if (isThisBlueStudentTaller != isBlueHigher)
+                {
+                    isClassPhotoValid = false;
+                }
+
+            }
+            return isClassPhotoValid;
+        }
     }
 }
