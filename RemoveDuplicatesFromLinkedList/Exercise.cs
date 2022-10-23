@@ -13,8 +13,39 @@ namespace CodingExercies.RemoveDuplicatesFromLinkedList
         */
         public static LinkedList RemoveDuplicatesFromLinkedList(LinkedList linkedList)
         {
-            // Write your code here.
-            return null;
+            var set = new HashSet<int>();
+
+            // initialize the first node
+            var currentNode = linkedList;
+
+            // to keep track of previous nodes as we process them.
+            LinkedList previousNode = null;
+
+            while (currentNode.next != null)
+            {
+                // has this value been seen?
+                if (set.Contains(currentNode.value))
+                {
+                    var nextNode = currentNode.next;
+                    previousNode.next = nextNode;
+
+                }
+                else
+                {
+                    // add it to the list.
+                    set.Add(currentNode.value);
+
+                }
+
+                // record current as previous
+                previousNode = currentNode;
+
+                // set up for the next iteration.
+                currentNode = currentNode.next;
+
+            }
+
+            return linkedList;
         }
     }
 }
