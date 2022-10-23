@@ -2,6 +2,7 @@ namespace CodingExercises.TandemBicycle
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:

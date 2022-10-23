@@ -30,8 +30,49 @@ namespace CodingExercises.TandemBicycle
         */
         public static int TandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, bool fastest)
         {
-            // Write your code here.
-            return -1;
+            var redShirtSpeedsList = redShirtSpeeds.ToList();
+            var blueShirtSpeedsList = blueShirtSpeeds.ToList();
+
+            var rides = new List<Ride>();
+
+            if (fastest)
+            {
+                // assumption: 
+                var riderCount = Math.Min(redShirtSpeedsList.Count(), redShirtSpeedsList.Count());
+
+                for (int i = 0; i < riderCount; i++)
+                {
+                    var maxRed = redShirtSpeedsList.Max();
+                    var maxBlue = redShirtSpeedsList.Max();
+
+                    // if blue is the fastest speed
+                    if (maxBlue > maxRed)
+                    {
+                        // we want to drive this ride by the blue rider.
+                        var redMin = redShirtSpeedsList.Min();
+                        rides.Add(new Ride(redMin, maxBlue));
+                        redShirtSpeedsList.Remove(redMin);
+                        blueShirtSpeedsList.Remove(maxBlue);
+
+                    }
+                    else
+                    {
+                        // we want to drive this ride by the red rider.
+                        var blueMin = blueShirtSpeedsList.Min();
+                        rides.Add(new Ride(maxRed, blueMin));
+                        redShirtSpeedsList.Remove(maxRed);
+                        blueShirtSpeedsList.Remove(blueMin);
+                    }
+                }
+
+                return rides.Sum(x => x.Speed);
+            }
+
+            var slowestRedRider = redShirtSpeeds.Max();
+            var slowestBlueRider = blueShirtSpeeds.Max();
+            return Math.Max(slowestBlueRider, slowestRedRider);
+
         }
+
     }
 }
