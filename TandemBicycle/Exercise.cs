@@ -35,12 +35,14 @@ namespace CodingExercises.TandemBicycle
 
             var rides = new List<Ride>();
             // assumption: 
-            var riderCount = Math.Min(redShirtSpeedsList.Count(), redShirtSpeedsList.Count());
+            var riderCount = Math.Min(redShirtSpeedsList.Count, redShirtSpeedsList.Count);
 
             for (int i = 0; i < riderCount; i++)
             {
                 var maxRed = redShirtSpeedsList.Max();
                 var maxBlue = redShirtSpeedsList.Max();
+
+                var isBlueMaxHigher = maxBlue > maxRed;
 
                 // if blue is the fastest speed
                 if (maxBlue > maxRed)
