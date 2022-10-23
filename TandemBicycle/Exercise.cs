@@ -34,12 +34,11 @@ namespace CodingExercises.TandemBicycle
             var blueShirtSpeedsList = blueShirtSpeeds.ToList();
 
             var rides = new List<Ride>();
+            // assumption: 
+            var riderCount = Math.Min(redShirtSpeedsList.Count(), redShirtSpeedsList.Count());
 
             if (fastest)
             {
-                // assumption: 
-                var riderCount = Math.Min(redShirtSpeedsList.Count(), redShirtSpeedsList.Count());
-
                 for (int i = 0; i < riderCount; i++)
                 {
                     var maxRed = redShirtSpeedsList.Max();
@@ -68,11 +67,33 @@ namespace CodingExercises.TandemBicycle
                 return rides.Sum(x => x.Speed);
             }
 
-            var slowestRedRider = redShirtSpeeds.Max();
-            var slowestBlueRider = blueShirtSpeeds.Max();
-            return Math.Max(slowestBlueRider, slowestRedRider);
+            // we are int slowest mode.
+            for (int i = 0; i < riderCount; i++)
+            {
+                var maxRed = redShirtSpeedsList.Max();
+                var maxBlue = redShirtSpeedsList.Max();
 
+                // if blue is the fastest speed
+                if (maxBlue > maxRed)
+                {
+                    // we want to drive this ride by the blue rider.
+                    var redMax = redShirtSpeedsList.Max();
+                    rides.Add(new Ride(redMax, maxBlue));
+                    redShirtSpeedsList.Remove(redMax);
+                    blueShirtSpeedsList.Remove(maxBlue);
+
+                }
+                else
+                {
+                    // we want to drive this ride by the red rider.
+                    var blueMax = blueShirtSpeedsList.Max();
+                    rides.Add(new Ride(maxRed, blueMax));
+                    redShirtSpeedsList.Remove(maxRed);
+                    blueShirtSpeedsList.Remove(blueMax);
+                }
+            }
+
+            return rides.Sum(x => x.Speed);
         }
-
     }
 }
