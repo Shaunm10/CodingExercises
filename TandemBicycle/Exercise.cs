@@ -37,37 +37,6 @@ namespace CodingExercises.TandemBicycle
             // assumption: 
             var riderCount = Math.Min(redShirtSpeedsList.Count(), redShirtSpeedsList.Count());
 
-            if (fastest)
-            {
-                for (int i = 0; i < riderCount; i++)
-                {
-                    var maxRed = redShirtSpeedsList.Max();
-                    var maxBlue = redShirtSpeedsList.Max();
-
-                    // if blue is the fastest speed
-                    if (maxBlue > maxRed)
-                    {
-                        // we want to drive this ride by the blue rider.
-                        var redMin = redShirtSpeedsList.Min();
-                        rides.Add(new Ride(redMin, maxBlue));
-                        redShirtSpeedsList.Remove(redMin);
-                        blueShirtSpeedsList.Remove(maxBlue);
-
-                    }
-                    else
-                    {
-                        // we want to drive this ride by the red rider.
-                        var blueMin = blueShirtSpeedsList.Min();
-                        rides.Add(new Ride(maxRed, blueMin));
-                        redShirtSpeedsList.Remove(maxRed);
-                        blueShirtSpeedsList.Remove(blueMin);
-                    }
-                }
-
-                return rides.Sum(x => x.Speed);
-            }
-
-            // we are int slowest mode.
             for (int i = 0; i < riderCount; i++)
             {
                 var maxRed = redShirtSpeedsList.Max();
@@ -77,19 +46,19 @@ namespace CodingExercises.TandemBicycle
                 if (maxBlue > maxRed)
                 {
                     // we want to drive this ride by the blue rider.
-                    var redMax = redShirtSpeedsList.Max();
-                    rides.Add(new Ride(redMax, maxBlue));
-                    redShirtSpeedsList.Remove(redMax);
+                    var redRider = fastest ? redShirtSpeedsList.Min() : redShirtSpeeds.Max();
+                    rides.Add(new Ride(redRider, maxBlue));
+                    redShirtSpeedsList.Remove(redRider);
                     blueShirtSpeedsList.Remove(maxBlue);
 
                 }
                 else
                 {
                     // we want to drive this ride by the red rider.
-                    var blueMax = blueShirtSpeedsList.Max();
-                    rides.Add(new Ride(maxRed, blueMax));
+                    var blueRider = fastest ? blueShirtSpeedsList.Min() : blueShirtSpeedsList.Max();
+                    rides.Add(new Ride(maxRed, blueRider));
                     redShirtSpeedsList.Remove(maxRed);
-                    blueShirtSpeedsList.Remove(blueMax);
+                    blueShirtSpeedsList.Remove(blueRider);
                 }
             }
 
