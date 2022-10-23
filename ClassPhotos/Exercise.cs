@@ -27,6 +27,9 @@ namespace CodingExercises.ClassPhotos
     {
         public bool ClassPhotos(List<int> redShirtHeights, List<int> blueShirtHeights)
         {
+            //redShirtHeights = redShirtHeights.OrderBy(x => x).ToList();
+            //blueShirtHeights = blueShirtHeights.OrderBy(x => x).ToList();
+
             var isClassPhotoValid = true;
 
             // if the lists aren't the same s

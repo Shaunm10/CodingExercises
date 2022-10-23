@@ -65,7 +65,7 @@ namespace CodingExercises.FindClosestValueInBST
         /// <summary>
         /// Systematic approach
         /// </summary>
-        public static int FindClosestValueInBst(BST tree, int target)
+        public static int FindClosestValueInBst(BST? tree, int target)
         {
 
             if (tree == null)

@@ -31,7 +31,7 @@ namespace CodingExercises.NodeDepths
             return leftLevelSum + rightLevelSum;
         }
 
-        public static List<int> NodeDepths(BinaryTree node, int currentNodeLevel)
+        public static List<int> NodeDepths(BinaryTree? node, int currentNodeLevel)
         {
             var returnLevels = new List<int>();
 
