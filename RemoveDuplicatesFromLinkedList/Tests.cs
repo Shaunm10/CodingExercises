@@ -1,4 +1,4 @@
-namespace CodingExercies.RemoveDuplicatesFromLinkedList
+namespace CodingExercises.RemoveDuplicatesFromLinkedList
 {
     public class Tests
     {

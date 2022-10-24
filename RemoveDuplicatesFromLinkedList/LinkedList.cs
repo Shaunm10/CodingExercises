@@ -1,12 +1,14 @@
-namespace CodingExercies.RemoveDuplicatesFromLinkedList
+namespace CodingExercises.RemoveDuplicatesFromLinkedList
 {
-   public class LinkedList {
-		public int value;
-		public LinkedList? next;
+    public class LinkedList
+    {
+        public int value;
+        public LinkedList? next;
 
-		public LinkedList(int value) {
-			this.value = value;
-			this.next = null;
-		}
-	}
+        public LinkedList(int value)
+        {
+            this.value = value;
+            this.next = null;
+        }
+    }
 }
