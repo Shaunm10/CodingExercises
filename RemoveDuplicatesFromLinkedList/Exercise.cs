@@ -21,7 +21,7 @@ namespace CodingExercies.RemoveDuplicatesFromLinkedList
             // to keep track of previous nodes as we process them.
             LinkedList previousNode = null;
 
-            while (currentNode.next != null)
+            while (currentNode != null)
             {
                 // has this value been seen?
                 if (set.Contains(currentNode.value))
