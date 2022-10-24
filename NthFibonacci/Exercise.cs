@@ -14,8 +14,22 @@ namespace CodingExercises.NthFibonacci
 
         public static int GetNthFib(int n)
         {
-            // Write your code here.
-            return -1;
+            if (n == 1)
+            {
+                return 0;
+            }
+
+            if (n == 2)
+            {
+                return 1;
+            }
+
+            var num1Before = n - 1;
+            var num2Before = n - 2;
+            var num1BeforeFib = GetNthFib(num1Before);
+            var num2BeforeFib = GetNthFib(num2Before);
+
+            return num1BeforeFib + num2BeforeFib;
         }
     }
 }
