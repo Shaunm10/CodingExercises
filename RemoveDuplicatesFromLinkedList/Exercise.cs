@@ -29,12 +29,12 @@ namespace CodingExercies.RemoveDuplicatesFromLinkedList
                     var nextNode = currentNode.next;
                     previousNode.next = nextNode;
 
+                    currentNode = previousNode;
                 }
                 else
                 {
                     // add it to the list.
                     set.Add(currentNode.value);
-
                 }
 
                 // record current as previous
