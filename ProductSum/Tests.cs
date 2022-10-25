@@ -10,16 +10,16 @@ namespace CodingExercises.ProductSum
             {
                 5,
                 2,
-                new List<object>
+                new List<object> //6 X 2 = 12
                 {
                     7,
                     -1
                 },
                 3,
-                new List<object>
+                new List<object> // 10 X 2 = 20
                 {
                     6,
-                    new List<object>
+                    new List<object>// -5 X 3 = -15
                     {
                         -13,
                         8
@@ -28,6 +28,7 @@ namespace CodingExercises.ProductSum
                 }
             };
 
+            //12 // calculated as: 5 + 2 + 2 * (7 - 1) + 3 + 2 * (6 + 3 * (-13 + 8) + 4)
             var expectedOutput = 12;
 
             // act:
