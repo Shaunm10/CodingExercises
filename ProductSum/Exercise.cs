@@ -30,21 +30,16 @@ namespace CodingExercises.ProductSum
                 }
                 else
                 {
-                    var additionalLevels = ProductSum((List<object>)itemAtIndex, nextDeptLevel);
-                    additionalLevels.ForEach(x => 
-                    {
-                        sum = sum + (x.Level * x.Sum);
-                    });
+                    sum = sum + ProductSum((List<object>)itemAtIndex, nextDeptLevel);
                 }
             }
-
 
             return sum;
         }
 
-        public static List<(int Level, int Sum)> ProductSum(List<object> array, int arrayLevel)
+        public static int ProductSum(List<object> array, int arrayLevel)
         {
-            var levels = new List<(int Level, int Sum)>();
+            //var levels = new List<(int Level, int Sum)>();
             var sum = 0;
 
             for (var i = 0; i < array.Count; i++)
@@ -57,12 +52,10 @@ namespace CodingExercises.ProductSum
                 }
                 else
                 {
-                    levels.AddRange(ProductSum((List<object>)itemAtIndex, arrayLevel + 1));
-                    //sum = sum + arrayLevel * ProductSum((List<object>)itemAtIndex, arrayLevel + 1);
+                    sum = sum + ProductSum((List<object>)itemAtIndex, arrayLevel + 1);
                 }
             }
-            levels.Add(new (arrayLevel, sum));
-            return levels;
+            return sum * arrayLevel;
         }
     }
 }
