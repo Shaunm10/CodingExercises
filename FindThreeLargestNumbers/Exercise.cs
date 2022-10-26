@@ -14,8 +14,12 @@ namespace CodingExercises.FindThreeLargestNumbers
     {
         public static int[] FindThreeLargestNumbers(int[] array)
         {
-            // Write your code here.
-            return new int[] { };
+            var topThreeLargest = array
+                .ToList()
+                .OrderByDescending(x => x)
+                .Take(3);
+
+            return topThreeLargest.OrderBy(x => x).ToArray();
         }
     }
 }
