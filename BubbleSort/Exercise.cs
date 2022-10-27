@@ -25,11 +25,6 @@ namespace CodingExercises.BubbleSort
                         wasSwapPerformed = true;
                     }
                 }
-
-                if (!wasSwapPerformed)
-                {
-                    break;
-                }
             }
 
             return array;

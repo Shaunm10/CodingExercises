@@ -15,5 +15,19 @@ namespace CodingExercises.BubbleSort
             // assert:
             result.Should().ContainInOrder(expectedOutput);
         }
+
+        [Fact]
+        public void TestB()
+        {
+            // arrange:
+            var inputArray = new int[] { 1, 3, 2 };
+            var expectedOutput = new int[] { 1, 2, 3 };
+
+            // act:
+            var result = Exercise.BubbleSort(inputArray);
+
+            // assert:
+            result.Should().ContainInOrder(expectedOutput);
+        }
     }
 }
