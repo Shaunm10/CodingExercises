@@ -12,18 +12,23 @@ namespace CodingExercises.BubbleSort
 
         public static int[] BubbleSort(int[] array)
         {
-            for (var start = 0; start < array.Count(); start++)
+            for (var outerIndex = 0; outerIndex < array.Count(); outerIndex++)
             {
                 var wasSwapPerformed = false;
-                for (var end = start + 1; end < array.Count(); end++)
+                for (var innerIndex = outerIndex; innerIndex < array.Count() + 1; innerIndex++)
                 {
-                    var swapped = SwapIfNeeded(array, start, end);
+                    var swapped = SwapIfNeeded(array, innerIndex, innerIndex + 1);
 
                     // see if we did a swap, and if so we need to keep going.
                     if (swapped)
                     {
                         wasSwapPerformed = true;
                     }
+                }
+
+                if (!wasSwapPerformed)
+                {
+                    break;
                 }
             }
 
