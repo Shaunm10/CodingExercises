@@ -15,7 +15,7 @@ namespace CodingExercises.BubbleSort
             for (var outerIndex = 0; outerIndex < array.Count(); outerIndex++)
             {
                 var wasSwapPerformed = false;
-                for (var innerIndex = outerIndex; innerIndex < array.Count() + 1; innerIndex++)
+                for (var innerIndex = 0; innerIndex + 1 < array.Count(); innerIndex++)
                 {
                     var swapped = SwapIfNeeded(array, innerIndex, innerIndex + 1);
 
