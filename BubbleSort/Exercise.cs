@@ -17,15 +17,13 @@ namespace CodingExercises.BubbleSort
                 var wasSwapPerformed = false;
                 for (var end = start + 1; end < array.Count(); end++)
                 {
-                    var result = SwapIfNeeded(array, start, end);
-                    array = result.Array;
+                    var swapped = SwapIfNeeded(array, start, end);
 
                     // see if we did a swap, and if so we need to keep going.
-                    if (result.WasASwapPerformed)
+                    if (swapped)
                     {
                         wasSwapPerformed = true;
                     }
-
                 }
 
                 if (!wasSwapPerformed)
@@ -37,7 +35,7 @@ namespace CodingExercises.BubbleSort
             return array;
         }
 
-        public static (int[] Array, bool WasASwapPerformed) SwapIfNeeded(int[] array, int startIndex, int endIndex)
+        public static bool SwapIfNeeded(int[] array, int startIndex, int endIndex)
         {
             var firstItem = array[startIndex];
             var secondItem = array[endIndex];
@@ -51,7 +49,7 @@ namespace CodingExercises.BubbleSort
                 array[startIndex] = secondItem;
             }
 
-            return (Array: array, WasASwapPerformed: wasASwapPerformed);
+            return wasASwapPerformed;
         }
     }
 }
