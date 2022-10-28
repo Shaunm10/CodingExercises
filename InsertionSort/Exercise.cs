@@ -16,7 +16,7 @@ namespace CodingExercises.InsertionSort
                 // get what the index of where the item belongs.
                 int indexOfInsertion = GetIndexOfInsertion(sortedList, movingCandidate);
 
-                AddItemToArray(array, movingCandidate, indexOfInsertion);
+                AddItemToArray(sortedList, movingCandidate, indexOfInsertion);
 
             }
 
