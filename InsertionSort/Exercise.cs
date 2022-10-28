@@ -17,17 +17,16 @@ namespace CodingExercises.InsertionSort
                 int indexOfInsertion = GetIndexOfInsertion(sortedList, movingCandidate);
 
                 AddItemToArray(sortedList, movingCandidate, indexOfInsertion);
-
             }
 
             // Write your code here.
-            return new int[] { };
+            return sortedList.Select(x => x.GetValueOrDefault()).ToArray();
         }
 
         private static void AddItemToArray(int?[] sortedList, int movingCandidate, int indexOfInsertion)
         {
             // move all the other items to the right by one, starting at the end.
-            for (var i = sortedList.Length; i > indexOfInsertion; i--)
+            for (var i = sortedList.Length - 1; i >= indexOfInsertion; i--)
             {
                 var itemToMove = sortedList[i];
                 if (itemToMove != null)
@@ -35,23 +34,22 @@ namespace CodingExercises.InsertionSort
                     sortedList[i + 1] = itemToMove;
                 }
             }
+
+            // now finally add the item to the targeted index
+            sortedList[indexOfInsertion] = movingCandidate;
         }
 
 
-        private static int GetIndexOfInsertion(int?[] sortedList, int insertingCandidate)
+        private static int GetIndexOfInsertion(int?[] sortedList, int insertionCandidate)
         {
             var candidateIndex = 0;
             for (var i = 0; i < sortedList.Length; i++)
             {
-                var itemAtIndex = sortedList[i];
-                if (itemAtIndex == null)
-                {
-                    return i;
-                }
+                var existingItemAtIndex = sortedList[i];
 
-                if (insertingCandidate > itemAtIndex)
+                if (insertionCandidate > existingItemAtIndex)
                 {
-                    return i;
+                    candidateIndex = i;
                 }
                 // otherwise keep moving through the list.
             }
@@ -59,7 +57,7 @@ namespace CodingExercises.InsertionSort
             // if we went through all the items and we 
             // couldn't find an item larger than the candidate
             // return the last row.
-            return sortedList.Length;
+            return candidateIndex;
         }
     }
 }
