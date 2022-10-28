@@ -12,7 +12,7 @@ namespace CodingExercises.SelectionSort
             var result = Exercise.SelectionSort(array);
 
             // assert:
-            result.Should().ContainEquivalentOf(expectation);
+            result.Should().ContainEquivalentOf(expectedOutput);
         }
     }
 }
