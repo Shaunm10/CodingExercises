@@ -47,10 +47,24 @@ namespace CodingExercises.InsertionSort
             {
                 var existingItemAtIndex = sortedList[i];
 
-                if (insertionCandidate > existingItemAtIndex)
+
+                if (existingItemAtIndex == null)
                 {
                     candidateIndex = i;
+                    break;
                 }
+
+                if (existingItemAtIndex <= insertionCandidate)
+                {
+                    // keep going.
+                    candidateIndex = i;
+                }
+                else
+                {
+                    candidateIndex = i;
+                    break;
+                }
+
                 // otherwise keep moving through the list.
             }
 
