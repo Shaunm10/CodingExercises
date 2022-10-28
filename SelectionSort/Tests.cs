@@ -2,6 +2,7 @@ namespace CodingExercises.SelectionSort
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
@@ -12,7 +13,7 @@ namespace CodingExercises.SelectionSort
             var result = Exercise.SelectionSort(array);
 
             // assert:
-            result.Should().ContainEquivalentOf(expectedOutput);
+            result.Should().ContainInOrder(expectedOutput);
         }
     }
 }
