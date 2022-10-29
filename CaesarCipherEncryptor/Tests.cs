@@ -2,6 +2,7 @@ namespace CodingExercises.CaesarCipherEncryptor
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:

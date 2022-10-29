@@ -11,32 +11,32 @@ namespace CodingExercises.CaesarCipherEncryptor
         public static string CaesarCypherEncryptor(string str, int key)
         {
             var characters = new char[str.Length];
-            for (var i = 1; i < str.Length; i++)
+            for (var i = 0; i < str.Length; i++)
             {
-                var newIndex = CalculateNewIndex(i, key, str.Length);
                 var character = str[i];
-                characters[newIndex] = character;
+                var shiftedCharacter = ShiftCharacter(character, key);
+                characters[i] = shiftedCharacter;
             }
 
             return characters.ToString();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="initialIndex">Where the index starts from</param>
-        /// <param name="key">How many Chars to move to the right.</param>
-        /// <param name="totalLength">What the total capacity is of the string.</param>
-        /// <returns></returns>
-        private static int CalculateNewIndex(int initialIndex, int key, int totalLength)
+        private static char ShiftCharacter(char character, int key)
         {
-            if (initialIndex + key > totalLength)
+            const int alphabeticCharStart = 97;
+
+            var charAsByte = Convert.ToByte(character);
+
+            var convertedByte = charAsByte + key;
+
+            if (convertedByte > alphabeticCharStart + 26)
             {
-                return initialIndex + key;
+                convertedByte = convertedByte + alphabeticCharStart - 26;
             }
 
-            return (initialIndex + key) % totalLength;
+            var returnChar = Convert.ToChar(convertedByte);
 
+            return returnChar;
         }
     }
 }
