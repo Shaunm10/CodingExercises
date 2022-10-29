@@ -18,20 +18,21 @@ namespace CodingExercises.CaesarCipherEncryptor
                 characters[i] = shiftedCharacter;
             }
 
-            return characters.ToString();
+            return new string(characters);
         }
 
         private static char ShiftCharacter(char character, int key)
         {
-            const int alphabeticCharStart = 97;
+            const int alphabeticCharStart = 96;
+            const int NumberOfCharactersInAlphabet = 26;
 
             var charAsByte = Convert.ToByte(character);
 
             var convertedByte = charAsByte + key;
 
-            if (convertedByte > alphabeticCharStart + 26)
+            if (convertedByte > alphabeticCharStart + NumberOfCharactersInAlphabet)
             {
-                convertedByte = convertedByte + alphabeticCharStart - 26;
+                convertedByte = convertedByte - NumberOfCharactersInAlphabet;
             }
 
             var returnChar = Convert.ToChar(convertedByte);
