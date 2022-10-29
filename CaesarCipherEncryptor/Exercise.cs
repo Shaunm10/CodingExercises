@@ -23,8 +23,15 @@ namespace CodingExercises.CaesarCipherEncryptor
 
         private static char ShiftCharacter(char character, int key)
         {
+            // the alphabetic charaters run from 97 -> 122
             const int alphabeticCharStart = 96;
             const int NumberOfCharactersInAlphabet = 26;
+
+            // normalize the key, so it's in bounds
+            if (key > NumberOfCharactersInAlphabet)
+            {
+                key = key % NumberOfCharactersInAlphabet;
+            }
 
             var charAsByte = Convert.ToByte(character);
 
