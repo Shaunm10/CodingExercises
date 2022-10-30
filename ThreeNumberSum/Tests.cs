@@ -2,11 +2,12 @@ namespace CodingExercises.ThreeNumberSum
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
-            var input = new int[]{12, 3, 1, 2, -6, 5, -8, 6};
-            var targetSum =0;
+            var input = new int[] { 12, 3, 1, 2, -6, 5, -8, 6 };
+            var targetSum = 0;
             var expectedOutput = new List<int[]>
             {
                 new int[]{-8, 2, 6},
