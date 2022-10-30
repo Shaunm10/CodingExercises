@@ -22,8 +22,52 @@ namespace CodingExercises.GenerateDocument
         */
         public static bool GenerateDocument(string characters, string document)
         {
-            // Write your code here.
-            return false;
+            var characterLookUp = new Dictionary<char, int>();
+            var documentLookUp = new Dictionary<char, int>();
+            var hasEnoughCharacters = true;
+
+            // convert the characters to the dictionary
+            for (var i = 0; i < characters.Length; i++)
+            {
+                var character = characters[i];
+
+                if (!characterLookUp.Keys.Contains(character))
+                {
+                    characterLookUp[character] = 1;
+                }
+                else
+                {
+                    characterLookUp[character] = characterLookUp[character] + 1;
+                }
+            }
+
+            // convert the characters to the dictionary
+            for (var i = 0; i < document.Length; i++)
+            {
+                var character = document[i];
+
+                if (!documentLookUp.Keys.Contains(character))
+                {
+                    documentLookUp[character] = 1;
+                }
+                else
+                {
+                    documentLookUp[character] = documentLookUp[character] + 1;
+                }
+            }
+
+            documentLookUp.Keys.ToList().ForEach(c =>
+            {
+                var requiredCount = documentLookUp[c];
+
+                if (!characterLookUp.Keys.Contains(c) ||
+                    characterLookUp[c] < requiredCount)
+                {
+                    hasEnoughCharacters = false;
+                }
+            });
+
+            return hasEnoughCharacters;
         }
     }
 }

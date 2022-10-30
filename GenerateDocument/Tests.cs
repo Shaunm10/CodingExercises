@@ -2,6 +2,8 @@ namespace CodingExercises.GenerateDocument
 {
     public class Tests
     {
+
+        [Fact]
         public void TestA()
         {
             // arrange:
