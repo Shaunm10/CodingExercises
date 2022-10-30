@@ -22,7 +22,7 @@ namespace CodingExercises.CaesarCipherEncryptor
         {
             // arrange:
             var input = "abc";
-            var key = 57;
+            var key = 52;
             var expectedOutput = "abc";
 
             // act:
