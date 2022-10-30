@@ -16,8 +16,29 @@ namespace CodingExercises.FirstNonRepeatingCharacter
         public static int FirstNonRepeatingCharacter(string str)
         {
             // Write your code here.
-            return -1;
-        }
+            var nonRepeatCharacterByFirstIndex = str
+                .GroupBy(x => x) // group it so we can get the count
+                .Where(x => x.Count() == 1) // filter out all the duplicates
+                .Select(x => x.Key) //  get the characters
+                .Select(c => new
+                {
+                    character = c,
+                    FirstIndexOf = str.IndexOf(c)
+                });
 
+            // in the case where are only repeated letters in the input.
+            if (!nonRepeatCharacterByFirstIndex.Any())
+            {
+                return -1;
+            }
+
+            var minIndex = nonRepeatCharacterByFirstIndex.Min(x => x.FirstIndexOf);
+
+            var candidate = nonRepeatCharacterByFirstIndex
+            .FirstOrDefault(x => x.FirstIndexOf == minIndex)?
+            .FirstIndexOf;
+
+            return candidate.HasValue ? candidate.Value : -1;
+        }
     }
 }
