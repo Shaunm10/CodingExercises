@@ -37,5 +37,31 @@ namespace CodingExercises.ThreeNumberSum
             // now sort.
             return outputArray;
         }
+
+        public static List<int[]> ThreeNumberSumPointerSolution(int[] array, int targetSum)
+        {
+            var sortedArray = array.OrderBy(x => x).ToArray();
+
+            var outputArray = new List<int[]>();
+            for (var indexA = 0; indexA < sortedArray.Length; indexA++)
+            {
+                for (var indexB = indexA + 1; indexB < sortedArray.Length; indexB++)
+                {
+                    for (var indexC = indexB + 1; indexC < sortedArray.Length; indexC++)
+                    {
+                        var numA = sortedArray[indexA];
+                        var numB = sortedArray[indexB];
+                        var numC = sortedArray[indexC];
+                        if (numA + numB + numC == targetSum)
+                        {
+                            outputArray.Add(new int[] { numA, numB, numC });
+                        }
+                    }
+                }
+            }
+
+            // now sort.
+            return outputArray;
+        }
     }
 }
