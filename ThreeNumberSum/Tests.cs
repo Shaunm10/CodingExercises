@@ -19,7 +19,7 @@ namespace CodingExercises.ThreeNumberSum
             var result = Exercise.ThreeNumberSum(input, targetSum);
 
             // assert:
-            result.Should().ContainInOrder(expectedOutput);
+            result.Should().BeEquivalentTo(expectedOutput);
         }
     }
 }

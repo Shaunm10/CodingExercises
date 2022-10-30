@@ -12,7 +12,7 @@ namespace CodingExercises.ThreeNumberSum
 
         If no three numbers sum up to the target sum, the function should return an empty array.
         */
-        public static List<int[]> ThreeNumberSum(int[] array, int targetSum)
+        public static List<int[]> ThreeNumberSumNestedLoops(int[] array, int targetSum)
         {
             var sortedArray = array.OrderBy(x => x).ToArray();
 
@@ -38,24 +38,41 @@ namespace CodingExercises.ThreeNumberSum
             return outputArray;
         }
 
-        public static List<int[]> ThreeNumberSumPointerSolution(int[] array, int targetSum)
+        public static List<int[]> ThreeNumberSum(int[] array, int targetSum)
         {
-            var sortedArray = array.OrderBy(x => x).ToArray();
+            var sortedArray = array.OrderBy(x => x).ToList();
 
             var outputArray = new List<int[]>();
-            for (var indexA = 0; indexA < sortedArray.Length; indexA++)
+
+            for (var i = 0; i < sortedArray.Count; i++)
             {
-                for (var indexB = indexA + 1; indexB < sortedArray.Length; indexB++)
+                var rightPointer = sortedArray.Count - 1;
+                var leftPointer = i + 1;
+                var firstNumber = sortedArray[i];
+
+                while (leftPointer < rightPointer)
                 {
-                    for (var indexC = indexB + 1; indexC < sortedArray.Length; indexC++)
+                    var secondNumber = sortedArray[leftPointer];
+                    var thirdNumber = sortedArray[rightPointer];
+
+                    var currentNumberSum = firstNumber + secondNumber + thirdNumber;
+
+                    if (currentNumberSum == targetSum)
                     {
-                        var numA = sortedArray[indexA];
-                        var numB = sortedArray[indexB];
-                        var numC = sortedArray[indexC];
-                        if (numA + numB + numC == targetSum)
-                        {
-                            outputArray.Add(new int[] { numA, numB, numC });
-                        }
+                        outputArray.Add(new int[] { firstNumber, secondNumber, thirdNumber });
+                        leftPointer++;
+                        rightPointer--;
+                    }
+                    else if (currentNumberSum > targetSum)
+                    {
+                        // the current number is to large
+                        rightPointer--;
+
+                    }
+                    else if (currentNumberSum < targetSum)
+                    {
+                        // the current number is to small
+                        leftPointer++;
                     }
                 }
             }
