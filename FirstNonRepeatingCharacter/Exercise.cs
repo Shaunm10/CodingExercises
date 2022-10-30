@@ -13,7 +13,7 @@ namespace CodingExercises.FirstNonRepeatingCharacter
         If the input string doesn't have any non-repeating characters, 
         your function should return -1
         */
-        public static int FirstNonRepeatingCharacter(string str)
+        public static int FirstNonRepeatingCharacterLinq(string str)
         {
             // Write your code here.
             var nonRepeatCharacterByFirstIndex = str
@@ -40,5 +40,57 @@ namespace CodingExercises.FirstNonRepeatingCharacter
 
             return candidate.HasValue ? candidate.Value : -1;
         }
+
+        public static int FirstNonRepeatingCharacter(string str)
+        {
+            var letterCounts = new Dictionary<char, CharacterByIndex>();
+            for (var i = 0; i < str.Length; i++)
+            {
+                var character = str[i];
+
+                if (letterCounts.Keys.Contains(character))
+                {
+                    // than we need to update it's count
+                    letterCounts[character].Count += 1;
+                }
+                else
+                {
+                    // than we need to add it and record it's index
+                    letterCounts[character] = new CharacterByIndex
+                    {
+                        Count = 1,
+                        FirstIndex = i
+                    };
+                }
+            }
+
+            var minIndex = int.MaxValue;
+            foreach (var key in letterCounts.Keys)
+            {
+                var letterCount = letterCounts[key];
+                if (letterCount.Count == 1)
+                {
+                    if (letterCount.FirstIndex < minIndex)
+                    {
+                        minIndex = letterCount.FirstIndex;
+                    }
+                }
+            }
+
+            if (minIndex == int.MaxValue)
+            {
+                return -1;
+            }
+
+            return minIndex;
+
+        }
+    }
+
+    internal class CharacterByIndex
+    {
+        //public char Character { get; set; }
+        public int Count { get; set; }
+        public int FirstIndex { get; set; }
     }
 }
