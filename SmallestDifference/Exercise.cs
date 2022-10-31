@@ -21,12 +21,47 @@ namespace CodingExercises.SmallestDifference
             var sortedArrayTwo = arrayTwo.OrderBy(x => x).ToList();
 
             var leftIndexPointer = 0;
-            var rightIndexPointer = arrayTwo.Length - 1;
+            var rightIndexPointer = 0;
 
-            while (leftIndexPointer)
+            var answer = new int[] { };
+            int? differenceCandidate = null;
 
-                // Write your code here.
-                return new int[] { };
+            // while the pointers aren't at the other end of their arrays.
+            while (leftIndexPointer != sortedArrayOne.Count - 1 && rightIndexPointer != sortedArrayTwo.Count - 1)
+            {
+                var leftNumber = sortedArrayOne[leftIndexPointer];
+                var rightNumber = sortedArrayTwo[rightIndexPointer];
+
+                var difference = leftNumber - rightNumber;
+
+                // if (difference == 0)
+                // {
+                //     answer = new int[] { leftNumber, rightNumber };
+                //     differenceCandidate = difference;
+                // }
+
+                // if the candidate is NULL or the difference is less than
+                // the old candidate.
+                if (differenceCandidate == null ||
+                    Math.Abs(difference) < Math.Abs(differenceCandidate.Value))
+                {
+                    answer = new int[] { leftNumber, rightNumber };
+                    differenceCandidate = difference;
+                }
+
+                if (leftNumber > rightNumber)
+                {
+                    rightIndexPointer++;
+                }
+
+                if (leftNumber < rightNumber)
+                {
+                    leftIndexPointer++;
+                }
+            }
+
+            // Write your code here.
+            return answer;
         }
     }
 }

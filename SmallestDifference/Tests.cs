@@ -2,6 +2,7 @@ namespace CodingExercises.SmallestDifference
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
