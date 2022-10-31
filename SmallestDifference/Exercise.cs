@@ -17,8 +17,16 @@ namespace CodingExercises.SmallestDifference
         */
         public static int[] SmallestDifference(int[] arrayOne, int[] arrayTwo)
         {
-            // Write your code here.
-            return new int[] { };
+            var sortedArrayOne = arrayOne.OrderBy(x => x).ToList();
+            var sortedArrayTwo = arrayTwo.OrderBy(x => x).ToList();
+
+            var leftIndexPointer = 0;
+            var rightIndexPointer = arrayTwo.Length - 1;
+
+            while (leftIndexPointer)
+
+                // Write your code here.
+                return new int[] { };
         }
     }
 }
