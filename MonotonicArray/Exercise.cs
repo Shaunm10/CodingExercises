@@ -44,6 +44,7 @@ namespace CodingExercises.MonotonicArray
                     }
                 }
 
+                // if we know the increase or decreasing
                 if (isIncreasing.HasValue && isIncreasing.Value)
                 {
                     if (item < lastNumber)
