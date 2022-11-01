@@ -18,8 +18,53 @@ namespace CodingExercises.MonotonicArray
         */
         public static bool IsMonotonic(int[] array)
         {
-            // Write your code here.
-            return false;
+            var isMonotonic = true;
+            bool? isIncreasing = null;
+            int? lastNumber = null;
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                var item = array[i];
+
+                // if we have a lastNumber, but haven't specified we are are decreasing
+                // or increasing.
+                if (lastNumber != null && isIncreasing == null)
+                {
+                    // if the last name is bigger
+                    if (lastNumber > item)
+                    {
+                        // than we are in decrease mode.
+                        isIncreasing = false;
+                    }
+
+                    if (lastNumber < item)
+                    {
+                        // than we are in increase mode.
+                        isIncreasing = true;
+                    }
+                }
+
+                if (isIncreasing.HasValue && isIncreasing.Value)
+                {
+                    if (item < lastNumber)
+                    {
+                        isMonotonic = false;
+                    }
+                }
+
+                if (isIncreasing.HasValue && !isIncreasing.Value)
+                {
+                    if (item > lastNumber)
+                    {
+                        isMonotonic = false;
+                    }
+                }
+
+                lastNumber = item;
+
+            }
+
+            return isMonotonic;
         }
     }
 }
