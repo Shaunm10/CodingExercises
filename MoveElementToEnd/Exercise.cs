@@ -13,20 +13,28 @@ namespace CodingExercises.MoveElementToEnd
         */
         public static List<int> MoveElementToEnd(List<int> array, int toMove)
         {
-            var indexesToMove = new int[] { };
+            var indexesToMove = new List<int>();
 
             for (var i = 0; i < array.Count; i++)
             {
                 var valueAtIndex = array[i];
                 if (valueAtIndex == toMove)
                 {
-                    indexesToMove.Append(i);
+                    indexesToMove.Add(i);
                 }
             }
 
-            //array.
+            // sort the array so largest index appears first.
+            indexesToMove = indexesToMove.OrderByDescending(x => x).ToList();
+
+            indexesToMove.ForEach(i =>
+            {
+                array.RemoveAt(i);
+                array = array.Append(toMove).ToList();
+            });
+
             // Write your code here.
-            return new List<int>();
+            return array;
         }
 
     }
