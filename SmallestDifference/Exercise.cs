@@ -28,7 +28,7 @@ namespace CodingExercises.SmallestDifference
 
             // while the pointers aren't at the other end of their arrays.
             while (leftIndexPointer < sortedArrayOne.Count &&
-                rightIndexPointer < sortedArrayTwo.Count - 1)
+                rightIndexPointer < sortedArrayTwo.Count)
             {
                 var leftNumber = sortedArrayOne[leftIndexPointer];
                 var rightNumber = sortedArrayTwo[rightIndexPointer];
@@ -53,8 +53,7 @@ namespace CodingExercises.SmallestDifference
                     leftIndexPointer++;
                 }
             }
-
-            // Write your code here.
+            // finally return the 2 numbers
             return answer;
         }
     }

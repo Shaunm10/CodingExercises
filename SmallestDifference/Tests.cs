@@ -62,7 +62,7 @@ namespace CodingExercises.SmallestDifference
             result.Should().BeEquivalentTo(expectedResult);
         }
 
-        [Fact(Skip = "We need to come back and figure out why this is not working.")]
+        [Fact()]
         public void TestE()
         {
             // arrange:
