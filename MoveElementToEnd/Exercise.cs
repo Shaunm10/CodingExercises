@@ -13,6 +13,18 @@ namespace CodingExercises.MoveElementToEnd
         */
         public static List<int> MoveElementToEnd(List<int> array, int toMove)
         {
+            var indexesToMove = new int[] { };
+
+            for (var i = 0; i < array.Count; i++)
+            {
+                var valueAtIndex = array[i];
+                if (valueAtIndex == toMove)
+                {
+                    indexesToMove.Append(i);
+                }
+            }
+
+            //array.
             // Write your code here.
             return new List<int>();
         }
