@@ -27,15 +27,15 @@ namespace CodingExercises.SmallestDifference
             var differenceCandidate = int.MaxValue;
 
             // while the pointers aren't at the other end of their arrays.
-            while (leftIndexPointer != sortedArrayOne.Count - 1
-                && rightIndexPointer != sortedArrayTwo.Count - 1)
+            while (leftIndexPointer < sortedArrayOne.Count &&
+                rightIndexPointer < sortedArrayTwo.Count - 1)
             {
                 var leftNumber = sortedArrayOne[leftIndexPointer];
                 var rightNumber = sortedArrayTwo[rightIndexPointer];
 
                 var difference = leftNumber - rightNumber;
 
-                // if the difference is less than
+                // if the candidate is NULL or the difference is less than
                 // the old candidate.
                 if (Math.Abs(difference) < Math.Abs(differenceCandidate))
                 {
