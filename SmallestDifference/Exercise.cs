@@ -24,26 +24,20 @@ namespace CodingExercises.SmallestDifference
             var rightIndexPointer = 0;
 
             var answer = new int[] { };
-            int? differenceCandidate = null;
+            var differenceCandidate = int.MaxValue;
 
             // while the pointers aren't at the other end of their arrays.
-            while (leftIndexPointer != sortedArrayOne.Count - 1 && rightIndexPointer != sortedArrayTwo.Count - 1)
+            while (leftIndexPointer != sortedArrayOne.Count - 1
+                && rightIndexPointer != sortedArrayTwo.Count - 1)
             {
                 var leftNumber = sortedArrayOne[leftIndexPointer];
                 var rightNumber = sortedArrayTwo[rightIndexPointer];
 
                 var difference = leftNumber - rightNumber;
 
-                // if (difference == 0)
-                // {
-                //     answer = new int[] { leftNumber, rightNumber };
-                //     differenceCandidate = difference;
-                // }
-
-                // if the candidate is NULL or the difference is less than
+                // if the difference is less than
                 // the old candidate.
-                if (differenceCandidate == null ||
-                    Math.Abs(difference) < Math.Abs(differenceCandidate.Value))
+                if (Math.Abs(difference) < Math.Abs(differenceCandidate))
                 {
                     answer = new int[] { leftNumber, rightNumber };
                     differenceCandidate = difference;
