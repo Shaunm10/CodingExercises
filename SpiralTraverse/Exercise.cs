@@ -17,12 +17,8 @@ namespace CodingExercises.SpiralTraverse
             var xIndex = 0;
             var yIndex = 0;
             var direction = Direction.Right;
-
-            // assuming this is a square 2 dimensional array.
-            var countOfOneSide = array.Length;
-            var totalCountOfAllItems = Math.Pow(countOfOneSide, 2);
-
-            for (int i = 0; i < totalCountOfAllItems; i++)
+            
+            for (int i = 0; i < array.Length; i++)
             {
                 // get the number at these coordinates and add them to the list.
                 var numberAtIndexes = array[yIndex, xIndex];
@@ -49,7 +45,7 @@ namespace CodingExercises.SpiralTraverse
 
                     case Direction.Down:
                         // can we keep going down?
-                        if (IsHittingBarrier(array, processedItems, xIndex, yIndex - 1))
+                        if (IsHittingBarrier(array, processedItems, xIndex, yIndex + 1))
                         {
                             // change direction
                             xIndex--;
@@ -57,7 +53,7 @@ namespace CodingExercises.SpiralTraverse
                         }
                         else
                         {
-                            yIndex--;
+                            yIndex++;
                         }
                         break;
 
@@ -66,11 +62,12 @@ namespace CodingExercises.SpiralTraverse
                         if (IsHittingBarrier(array, processedItems, xIndex + 1, yIndex))
                         {
                             // change direction
-                            yIndex--;
+                            yIndex++;
                             direction = Direction.Down;
                         }
                         else
                         {
+                            // keep going right.
                             xIndex++;
                         }
                         break;
@@ -97,12 +94,17 @@ namespace CodingExercises.SpiralTraverse
 
         private static bool IsHittingBarrier(int[,] array, List<Point> processedItems, int xIndex, int yIndex)
         {
-            if (array.Length > yIndex || array.GetLength)
+            // check to see if either value is too large, and are outside the range of the index.
+            if (array.GetLength(0) <= yIndex || array.GetLength(1) <= xIndex)
+            {
+                return true;
+            }
 
-                if (array[xIndex, yIndex] == null)
-                {
-                    return true;
-                }
+            // see if either value is too small, and are outside the range of the index.
+            if (yIndex < 0 || xIndex < 0)
+            {
+                return true;
+            }
 
             if (processedItems.Any(p => p.X == xIndex && p.Y == yIndex))
             {
