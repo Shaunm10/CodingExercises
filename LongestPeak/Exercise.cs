@@ -22,7 +22,7 @@ namespace CodingExercises.LongestPeak
             var largestRangeSize = 0;
             for (var i = 0; i < array.Length; i++)
             {
-                if (IsPeakValue(i, array))
+                if (IsPeak(i, array))
                 {
                     int rangeBefore = GetRange(i, RangeDirection.Before, array);
                     int rangeAfter = GetRange(i, RangeDirection.After, array);
@@ -94,7 +94,7 @@ namespace CodingExercises.LongestPeak
             }
         }
 
-        private static bool IsPeakValue(int index, int[] array)
+        private static bool IsPeak(int index, int[] array)
         {
             // if its the first element
             if (index == 0)
