@@ -19,9 +19,106 @@ namespace CodingExercises.LongestPeak
 
         public static int LongestPeak(int[] array)
         {
-            // Write your code here.
-            return -1;
+            var largestRangeSize = 0;
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (IsPeakValue(i, array))
+                {
+                    int rangeBefore = GetRange(i, RangeDirection.Before, array);
+                    int rangeAfter = GetRange(i, RangeDirection.After, array);
+
+                    // add up the total range size
+                    var totalRange = rangeBefore + 1 + rangeAfter;
+
+                    // if this is the new biggest range
+                    if (totalRange > largestRangeSize)
+                    {
+                        largestRangeSize = totalRange;
+                    }
+
+                    // bump up index because we can skip the next few checks since it's on a decline
+                    i = i + rangeAfter;
+                }
+            }
+
+            return largestRangeSize;
         }
 
+        private static int GetRange(int targetIndex, RangeDirection rangeDirection, int[] array)
+        {
+            var sequenceCount = 0;
+            var lastNumber = array[targetIndex];
+
+            if (rangeDirection == RangeDirection.After)
+            {
+                for (var i = targetIndex + 1; i < array.Length; i++)
+                {
+                    var nextNumber = array[i];
+
+                    // while the steps are moving down.
+                    if (nextNumber < lastNumber)
+                    {
+                        sequenceCount++;
+                        lastNumber = nextNumber;
+                    }
+                    else
+                    {
+                        // we got to the end of the sequence.
+                        return sequenceCount;
+                    }
+                }
+
+                return sequenceCount;
+            }
+            else
+            {
+                for (var i = targetIndex - 1; i >= 0; i--)
+                {
+                    var nextNumber = array[i];
+
+                    // while the steps are moving down.
+                    if (nextNumber < lastNumber)
+                    {
+                        sequenceCount++;
+                        lastNumber = nextNumber;
+                    }
+                    else
+                    {
+                        // we got to the end of the sequence.
+                        return sequenceCount;
+                    }
+                }
+
+                return sequenceCount;
+
+            }
+        }
+
+        private static bool IsPeakValue(int index, int[] array)
+        {
+            // if its the first element
+            if (index == 0)
+            {
+                return false;
+            }
+
+            // if it's the last element.
+            if (index + 1 == array.Length)
+            {
+                return false;
+            }
+
+            var valueBefore = array[index - 1];
+            var valueAtIndex = array[index];
+            var valueAfter = array[index + 1];
+
+            return valueBefore < valueAtIndex && valueAtIndex > valueAfter;
+        }
+
+        private enum RangeDirection
+        {
+            Before,
+            After
+        }
     }
 }

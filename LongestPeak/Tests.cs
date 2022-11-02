@@ -2,6 +2,7 @@ namespace CodingExercises.LongestPeak
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
