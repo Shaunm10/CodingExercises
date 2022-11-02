@@ -12,25 +12,25 @@ namespace CodingExercises.SpiralTraverse
         */
         public static List<int> SpiralTraverse(int[,] array)
         {
-            var items = new List<int>();
-            var processedItems = new List<Point>();
+            var numbersInSpiralOrder = new List<int>();
+            var pointsAlreadyVisited = new List<Point>();
             var xIndex = 0;
             var yIndex = 0;
             var direction = Direction.Right;
-            
+
             for (int i = 0; i < array.Length; i++)
             {
                 // get the number at these coordinates and add them to the list.
-                var numberAtIndexes = array[yIndex, xIndex];
-                items.Add(numberAtIndexes);
+                var value = array[yIndex, xIndex];
+                numbersInSpiralOrder.Add(value);
 
                 // record this space
-                processedItems.Add(new Point { X = xIndex, Y = yIndex });
+                pointsAlreadyVisited.Add(new Point { X = xIndex, Y = yIndex });
 
                 switch (direction)
                 {
                     case Direction.Left:
-                        if (IsHittingBarrier(array, processedItems, xIndex - 1, yIndex))
+                        if (IsHittingBarrier(array, pointsAlreadyVisited, xIndex - 1, yIndex))
                         {
                             // change direction
                             direction = Direction.Up;
@@ -45,7 +45,7 @@ namespace CodingExercises.SpiralTraverse
 
                     case Direction.Down:
                         // can we keep going down?
-                        if (IsHittingBarrier(array, processedItems, xIndex, yIndex + 1))
+                        if (IsHittingBarrier(array, pointsAlreadyVisited, xIndex, yIndex + 1))
                         {
                             // change direction
                             xIndex--;
@@ -59,7 +59,7 @@ namespace CodingExercises.SpiralTraverse
 
                     case Direction.Right:
                         // can we keep going right?
-                        if (IsHittingBarrier(array, processedItems, xIndex + 1, yIndex))
+                        if (IsHittingBarrier(array, pointsAlreadyVisited, xIndex + 1, yIndex))
                         {
                             // change direction
                             yIndex++;
@@ -75,7 +75,7 @@ namespace CodingExercises.SpiralTraverse
                     case Direction.Up:
 
                         // can we keep going Up?
-                        if (IsHittingBarrier(array, processedItems, xIndex, yIndex - 1))
+                        if (IsHittingBarrier(array, pointsAlreadyVisited, xIndex, yIndex - 1))
                         {
                             // change direction
                             xIndex++;
@@ -89,7 +89,7 @@ namespace CodingExercises.SpiralTraverse
                 }
             }
 
-            return items;
+            return numbersInSpiralOrder;
         }
 
         private static bool IsHittingBarrier(int[,] array, List<Point> processedItems, int xIndex, int yIndex)
