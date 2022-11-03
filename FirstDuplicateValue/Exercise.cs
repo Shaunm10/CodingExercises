@@ -18,9 +18,23 @@ namespace CodingExercises.FirstDuplicateValue
         */
         public static int FirstDuplicateValue(int[] array)
         {
+            var set = new HashSet<int>();
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                var value = array[i];
+
+                if (set.Contains(value))
+                {
+                    return value;
+                }
+
+                // otherwise add it.
+                set.Add(value);
+            }
+
             // Write your code here.
             return -1;
         }
-
     }
 }
