@@ -1,4 +1,4 @@
-namespace CodingExercise.ArrayOfProducts
+namespace CodingExercises.ArrayOfProducts
 {
     public class Tests
     {
@@ -15,7 +15,7 @@ namespace CodingExercise.ArrayOfProducts
             int[] expectedOutput = { 8, 40, 10, 20 };
 
             // act:
-            var result = Exercise.ArrayOfProducts(array);
+            var result = Exercise.ArrayOfProductsLinq(array);
 
             // assert:
             result.Should().BeEquivalentTo(expectedOutput);

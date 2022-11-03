@@ -1,4 +1,4 @@
-namespace CodingExercise.ArrayOfProducts
+namespace CodingExercises.ArrayOfProducts
 {
     public class Exercise
     {
@@ -14,10 +14,25 @@ namespace CodingExercise.ArrayOfProducts
         Note that you're expected to solve this problem without 
         using division.
         */
-        public static int[] ArrayOfProducts(int[] array)
+        public static int[] ArrayOfProductsLinq(int[] array)
         {
             // Write your code here.
-            return new int[] { };
+            return array
+            .ToList()
+            .Select(x => array
+                .Where(z => z != x)
+                .Aggregate((acc, val) => acc * val))
+                .ToArray();
+        }
+
+        public static int[] ArrayOfProducts(int[] array)
+        {
+
+            for (var i = 0; i < array.Length; i++)
+            {
+                var allNumbersExcept = array.w
+
+            }
         }
     }
 }
