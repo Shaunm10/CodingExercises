@@ -14,7 +14,7 @@ namespace CodingExercises.ArrayOfProducts
         Note that you're expected to solve this problem without 
         using division.
         */
-        public static int[] ArrayOfProductsLinq(int[] array)
+        public static int[] ArrayOfProducts(int[] array)
         {
             // Write your code here.
             return array
@@ -25,14 +25,26 @@ namespace CodingExercises.ArrayOfProducts
                 .ToArray();
         }
 
-        public static int[] ArrayOfProducts(int[] array)
+        public static int[] ArrayOfProductsNonLinq(int[] array)
         {
+            var output = new int[array.Length];
 
             for (var i = 0; i < array.Length; i++)
             {
-                var allNumbersExcept = array.w
+                var valuesOtherThanSubject = array.Where((item, idx) => idx != i).ToArray();
+
+                var aggregate = 1;
+
+                for (var j = 0; j < valuesOtherThanSubject.Count(); j++)
+                {
+                    var valueAtIndex = valuesOtherThanSubject[j];
+                    aggregate = aggregate * valueAtIndex;
+                }
+
+                output[i] = aggregate;
 
             }
+            return output;
         }
     }
 }
