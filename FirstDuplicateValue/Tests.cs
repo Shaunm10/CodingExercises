@@ -2,6 +2,7 @@ namespace CodingExercises.FirstDuplicateValue
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
