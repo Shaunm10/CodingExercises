@@ -42,7 +42,6 @@ namespace CodingExercises.MergeOverlappingIntervals
 
                     // add this new combined one.
                     uniqueIntervals = uniqueIntervals.Append(combinedInterval).ToArray();
-
                 }
             }
 
@@ -64,9 +63,9 @@ namespace CodingExercises.MergeOverlappingIntervals
         {
             var overlappingIndexes = new int[] { };
 
-            for(var i =0; i< uniqueIntervals.Length; i++)
+            for (var i = 0; i < uniqueIntervals.Length; i++)
             {
-                
+
             }
 
             return overlappingIndexes;
