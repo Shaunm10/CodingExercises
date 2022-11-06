@@ -26,6 +26,7 @@ namespace CodingExercises.MergeOverlappingIntervals
             var result = Exercise.MergeOverlappingIntervals(intervals);
 
             // assert:
+            result.Should().BeEquivalentTo(expectedOutput);
         }
     }
 }
