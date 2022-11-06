@@ -22,15 +22,14 @@ namespace CodingExercises.MergeOverlappingIntervals
 
             for (var i = 0; i < intervals.Length; i++)
             {
-                var interval = intervals[0];
+                var interval = intervals[i];
 
-                int[] overlappingIndexes = GetOverlappingIntervalIndexes(uniqueIntervals, interval);
+                var overlappingIndexes = GetOverlappingIntervalIndexes(uniqueIntervals, interval);
 
-                if (overlappingIndexes.Length == 0)
+                if (overlappingIndexes.Count == 0)
                 {
                     // add this interval to the list.
                     uniqueIntervals = uniqueIntervals.Append(interval).ToArray();
-
                 }
                 else
                 {
@@ -38,7 +37,7 @@ namespace CodingExercises.MergeOverlappingIntervals
                     int[] combinedInterval = CombineIntervals(uniqueIntervals, overlappingIndexes, interval);
 
                     // remove the exiting overlapping ones.
-                    RemoveIntervals(uniqueIntervals, overlappingIndexes);
+                    uniqueIntervals = RemoveIntervals(uniqueIntervals, overlappingIndexes);
 
                     // add this new combined one.
                     uniqueIntervals = uniqueIntervals.Append(combinedInterval).ToArray();
@@ -49,23 +48,62 @@ namespace CodingExercises.MergeOverlappingIntervals
             return uniqueIntervals;
         }
 
-        private static void RemoveIntervals(int[][] uniqueIntervals, int[] overlappingIndexes)
+        private static int[][] RemoveIntervals(int[][] uniqueIntervals, List<int> overlappingIndexes)
         {
-            throw new NotImplementedException();
+            var largeToSmallIndexes = overlappingIndexes.OrderByDescending(x => x).ToList();
+            var uniqueIntervalsList = uniqueIntervals.ToList();
+
+            for (var i = 0; i < largeToSmallIndexes.Count; i++)
+            {
+                var indexToBeRemoved = largeToSmallIndexes[i];
+
+                uniqueIntervalsList.RemoveAt(indexToBeRemoved);
+
+            }
+
+            return uniqueIntervalsList.ToArray();
         }
 
-        private static int[] CombineIntervals(int[][] uniqueIntervals, int[] overlappingIndexes, int[] interval)
+        private static int[] CombineIntervals(int[][] uniqueIntervals, List<int> overlappingIndexes, int[] interval)
         {
-            throw new NotImplementedException();
+            var combinedInterval = new int[] { interval[0], interval[1] };
+
+            for (var i = 0; i < overlappingIndexes.Count; i++)
+            {
+                var index = overlappingIndexes[i];
+                var existingInterval = uniqueIntervals[index];
+
+                // see if we need to push out the beginning number
+                if (existingInterval[0] < combinedInterval[0])
+                {
+                    combinedInterval[0] = existingInterval[0];
+                }
+
+                // see if we need to push out the end number.
+                if (existingInterval[1] > combinedInterval[1])
+                {
+                    combinedInterval[1] = existingInterval[1];
+                }
+            }
+
+            return combinedInterval;
         }
 
-        private static int[] GetOverlappingIntervalIndexes(int[][] uniqueIntervals, int[] interval)
+        private static List<int> GetOverlappingIntervalIndexes(int[][] uniqueIntervals, int[] candidate)
         {
-            var overlappingIndexes = new int[] { };
+            var overlappingIndexes = new List<int> { };
 
             for (var i = 0; i < uniqueIntervals.Length; i++)
             {
+                var storedInterval = uniqueIntervals[i];
 
+                // stored.Min < = candidate.Max + stored.Max >= cand.Min
+                if (storedInterval[0] <= candidate[1] &&
+                    storedInterval[1] >= candidate[0])
+                {
+                    overlappingIndexes.Add(i);
+
+                }
             }
 
             return overlappingIndexes;
