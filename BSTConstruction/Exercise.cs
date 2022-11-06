@@ -35,15 +35,61 @@ public class BST
 
     public BST Insert(int value)
     {
-        // Write your code here.
-        // Do not edit the return statement of this method.
+        // if this node's value is greater than the incoming value
+        if (this.value > value)
+        {
+            // send it left.
+            if (this.left == null)
+            {
+                this.left = new BST(value);
+            }
+            else
+            {
+                this.left.Insert(value);
+            }
+
+        }
+        else
+        {
+            // send it right.
+            if (this.right == null)
+            {
+                this.right = new BST(value);
+            }
+            else
+            {
+                this.right.Insert(value);
+            }
+
+        }
         return this;
     }
 
     public bool Contains(int value)
     {
-        // Write your code here.
-        return false;
+        if (this.value == value)
+        {
+            return true;
+        }
+
+        if (value < this.value)
+        {
+            // send right
+            if (this.right == null)
+            {
+                return false;
+            }
+            return this.right.Contains(value);
+        }
+        else
+        {
+            // send left
+            if (this.left == null)
+            {
+                return false;
+            }
+            return this.left.Contains(value);
+        }
     }
 
     public BST Remove(int value)
