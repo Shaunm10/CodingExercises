@@ -6,15 +6,16 @@ namespace CodingExercises.BSTConstruction
         public void InsertTrue()
         {
             // arrange;
-            var root = new BST(10);
-            root.Insert(5);
-            root.Insert(15);
-            root.Insert(2);
-            root.Insert(5);
-            root.Insert(13);
-            root.Insert(22);
-            root.Insert(1);
-            root.Insert(14);
+            var root = new BST(10)
+                .Insert(5)
+                .Insert(15)
+                .Insert(2)
+                .Insert(5)
+                .Insert(13)
+                .Insert(22)
+                .Insert(1)
+                .Insert(14);
+
             var expectedResult = true;
 
             // act:
@@ -31,14 +32,16 @@ namespace CodingExercises.BSTConstruction
         {
             // arrange;
             var root = new BST(10);
-            root.Insert(5);
-            root.Insert(15);
-            root.Insert(2);
-            root.Insert(5);
-            root.Insert(13);
-            root.Insert(22);
-            root.Insert(1);
-            root.Insert(14);
+            root
+                .Insert(5)
+                .Insert(15)
+                .Insert(2)
+                .Insert(5)
+                .Insert(13)
+                .Insert(22)
+                .Insert(1)
+                .Insert(14);
+
             var expectedResult = false;
 
             // act:
@@ -54,15 +57,16 @@ namespace CodingExercises.BSTConstruction
         public void Remove()
         {
             // arrange;
-            var root = new BST(10);
-            root.Insert(5);
-            root.Insert(15);
-            root.Insert(2);
-            root.Insert(5);
-            root.Insert(13);
-            root.Insert(22);
-            root.Insert(1);
-            root.Insert(14);
+            var root = new BST(10)
+                .Insert(5)
+                .Insert(15)
+                .Insert(2)
+                .Insert(5)
+                .Insert(13)
+                .Insert(22)
+                .Insert(1)
+                .Insert(14);
+
             var expectedResult = false;
             var expectedResult2 = true;
 
