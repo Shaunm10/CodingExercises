@@ -94,20 +94,7 @@ public class BST
 
     public BST Remove(int value)
     {
-        // if this is the value to be returned.
-        if (this.value == value)
-        {
-            if (this.left != null)
-            {
-                return left;
-            }
-
-            if (this.right != null)
-            {
-                return right;
-            }
-        }
-
+        // if the value being removed is larger than this node's value.
         if (this.value < value)
         {
             // go right
@@ -117,17 +104,49 @@ public class BST
             }
         }
 
+        // if the value being removed is smaller than this node's value.
         if (this.value > value)
         {
             // go left
             if (this.left != null)
             {
                 this.left = this.left.Remove(value);
-
             }
         }
 
+        // if this is the value to be removed.
+        if (this.value == value)
+        {
+            if (this.left == null && this.right == null) // 0 children
+            {
+                return null;
+            }
+            else if (this.left == null && this.right != null) // 1 child (right)
+            {
+                return this.right;
+            }
+            else if (this.right == null && this.left != null) // 1 child (left)
+            {
+                return this.left;
+            }
+
+            // 2 children
+            var minValue = this.right.GetMinValue();
+            this.value = minValue;
+            this.right.Remove(minValue);
+        }
+
         return this;
+    }
+
+    public int GetMinValue()
+    {
+        if (this.left != null)
+        {
+            return this.left.GetMinValue();
+        }
+
+        return this.value;
     }
 
 }
