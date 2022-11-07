@@ -106,33 +106,58 @@ namespace CodingExercises.BSTConstruction
         [Fact]
         public void TestB()
         {
-            // arrange;
             var root = new BST(10);
+            root.value.Should().Be(10);
 
-            // act:
-            root = root.Insert(5);
-            var step1Root = root.value;
+            // insert 5, root should be 10
+            root.Insert(5).value.Should().Be(10);
 
-            root = root.Insert(15);
-            var step2Root = root.value;
+            // insert 15 root should be 10
+            root.Insert(15).value.Should().Be(10);
 
-            root = root.Insert(10);
             root.Contains(10).Should().Be(true);
+
             root.Contains(5).Should().Be(true);
+
             root.Contains(15).Should().Be(true);
-
             root = root.Remove(10);
-            root = root.Remove(5);
+            root.value.Should().Be(15);
 
+
+        }
+
+        [Fact]
+        public void Test7()
+        {
+            var root = new BST(1);
+            root.value.Should().Be(1);
+
+            // insert 2, root should be 1
+            root.Insert(2).value.Should().Be(1);
+
+            // insert 3, root should be 1
+            root.Insert(3).value.Should().Be(1);
+
+            // insert 4, root should be 1
+            root.Insert(4).value.Should().Be(1);
 
             root = root.Remove(1);
-            var step4Root = root.value;
+            root.value.Should().Be(2);
+        }
 
-            // assert:
-            step1Root.Should().Be(1);
-            step2Root.Should().Be(1);
-            step3Root.Should().Be(1);
-            step4Root.Should().Be(-2);
+        [Fact]
+        public void Test9()
+        {
+            var root = new BST(10);
+            root = root.Insert(5);
+            root.value.Should().Be(10);
+
+            root = root.Remove(10);
+            root.value.Should().Be(5);
+
+            root.Contains(15).Should().BeFalse();
+
+            root.value.Should().Be(5);
         }
     }
 }

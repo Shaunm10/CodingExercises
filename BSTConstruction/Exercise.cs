@@ -133,7 +133,7 @@ public class BST
             // 2 children
             var minValue = this.right.GetMinValue();
             this.value = minValue;
-            this.right.Remove(minValue);
+            this.right = this.right.Remove(minValue);
         }
 
         return this;
