@@ -76,5 +76,63 @@ namespace CodingExercises.BSTConstruction
             resultForContains10.Should().Be(false);
             resultForContains15.Should().Be(true);
         }
+
+        [Fact]
+        public void TestA()
+        {
+            // arrange;
+            var root = new BST(1);
+
+            // act:
+            root = root.Insert(-2);
+            var step1Root = root.value;
+
+            root = root.Insert(-3);
+            var step2Root = root.value;
+
+            root = root.Insert(-4);
+            var step3Root = root.value;
+
+            root = root.Remove(1);
+            var step4Root = root.value;
+
+            // assert:
+            step1Root.Should().Be(1);
+            step2Root.Should().Be(1);
+            step3Root.Should().Be(1);
+            step4Root.Should().Be(-2);
+        }
+
+        [Fact]
+        public void TestB()
+        {
+            // arrange;
+            var root = new BST(10);
+
+            // act:
+            root = root.Insert(5);
+            var step1Root = root.value;
+
+            root = root.Insert(15);
+            var step2Root = root.value;
+
+            root = root.Insert(10);
+            root.Contains(10).Should().Be(true);
+            root.Contains(5).Should().Be(true);
+            root.Contains(15).Should().Be(true);
+
+            root = root.Remove(10);
+            root = root.Remove(5);
+
+
+            root = root.Remove(1);
+            var step4Root = root.value;
+
+            // assert:
+            step1Root.Should().Be(1);
+            step2Root.Should().Be(1);
+            step3Root.Should().Be(1);
+            step4Root.Should().Be(-2);
+        }
     }
 }
