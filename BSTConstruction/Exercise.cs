@@ -72,7 +72,7 @@ public class BST
             return true;
         }
 
-        if (value < this.value)
+        if (value > this.value)
         {
             // send right
             if (this.right == null)
@@ -94,8 +94,39 @@ public class BST
 
     public BST Remove(int value)
     {
-        // Write your code here.
-        // Do not edit the return statement of this method.
+        // if this is the value to be returned.
+        if (this.value == value)
+        {
+            if (this.left != null)
+            {
+                return left;
+            }
+
+            if (this.right != null)
+            {
+                return right;
+            }
+        }
+
+        if (this.value < value)
+        {
+            // go right
+            if (this.right != null)
+            {
+                this.right = this.right.Remove(value);
+            }
+        }
+
+        if (this.value > value)
+        {
+            // go left
+            if (this.left != null)
+            {
+                this.left = this.left.Remove(value);
+
+            }
+        }
+
         return this;
     }
 

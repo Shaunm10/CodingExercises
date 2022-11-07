@@ -67,17 +67,14 @@ namespace CodingExercises.BSTConstruction
                 .Insert(1)
                 .Insert(14);
 
-            var expectedResult = false;
-            var expectedResult2 = true;
-
             // act:
             var newRoot = root.Remove(10);
-            var result = newRoot.Contains(10);
-            var result2 = newRoot.Contains(15);
+            var resultForContains10 = newRoot.Contains(10);
+            var resultForContains15 = newRoot.Contains(15);
 
             // assert:
-            result.Should().Be(expectedResult);
-            result2.Should().Be(expectedResult2);
+            resultForContains10.Should().Be(false);
+            resultForContains15.Should().Be(true);
         }
     }
 }
