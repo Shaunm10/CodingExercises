@@ -95,4 +95,31 @@ public class Tests
         // assert:
         result.Should().Be(false);
     }
+
+    [Fact]
+    public void Test11()
+    {
+        var root = new BST
+        {
+            value = 10,
+            left = new BST
+            {
+                value = 5,
+                right = new BST
+                {
+                    value = 10
+                }
+            },
+            right = new BST
+            {
+                value = 15
+            }
+        };
+
+        // act:
+        var result = Exercise.ValidateBst(root);
+
+        // assert:
+        result.Should().Be(false);
+    }
 }
