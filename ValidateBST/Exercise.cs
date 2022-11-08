@@ -29,7 +29,7 @@ public class Exercise
             isValid = false;
         }
 
-        if (tree.value <= floor)
+        if (tree.value < floor)
         {
             isValid = false;
         }
