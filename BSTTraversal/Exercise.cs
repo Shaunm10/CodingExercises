@@ -20,24 +20,57 @@ namespace CodingExercises.BSTTraversal
         and its children nodes are either valid BST nodes themselves or None / null.
         */
 
+
+        /// <summary>
+        ///  Get the values in order as traversing from left to right.
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static List<int> InOrderTraverse(BST tree, List<int> array)
         {
-            // Write your code here.
-            return new List<int>();
+            // add the left(s)
+            if (tree.left != null)
+            {
+                InOrderTraverse(tree.left, array);
+            }
+
+            // add this item
+            array.Add(tree.value.GetValueOrDefault());
+
+            // add the right side(s)
+            if (tree.right != null)
+            {
+                InOrderTraverse(tree.right, array);
+
+            }
+
+            return array;
         }
 
+
+        /// <summary>
+        /// Get the values in order of the nodes top down.
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static List<int> PreOrderTraverse(BST tree, List<int> array)
         {
             // Write your code here.
             return new List<int>();
         }
 
+        /// <summary>
+        /// Get the values in order of the nodes top down.
+        /// </summary>
+        /// <param name="tree"></param>
+        /// <param name="array"></param>
+        /// <returns></returns>
         public static List<int> PostOrderTraverse(BST tree, List<int> array)
         {
             // Write your code here.
             return new List<int>();
         }
-
-
     }
 }
