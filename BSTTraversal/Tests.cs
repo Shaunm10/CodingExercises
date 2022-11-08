@@ -41,7 +41,6 @@ namespace CodingExercises.BSTTraversal
             var array = new List<int>();
             var expectedResult = new List<int?> { 1, 2, 5, 5, 22, 15, 10 };
 
-
             // act:
             var result = Exercise.PostOrderTraverse(startingTree, array);
 

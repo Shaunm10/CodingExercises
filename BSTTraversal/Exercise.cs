@@ -65,7 +65,6 @@ namespace CodingExercises.BSTTraversal
                 InOrderTraverse(tree.left, array);
             }
 
-
             // add the right side(s)
             if (tree.right != null)
             {
@@ -83,8 +82,21 @@ namespace CodingExercises.BSTTraversal
         /// <returns></returns>
         public static List<int> PostOrderTraverse(BST tree, List<int> array)
         {
-            // Write your code here.
-            return new List<int>();
+            // add the left(s)
+            if (tree.left != null)
+            {
+                InOrderTraverse(tree.left, array);
+            }
+
+            // add the right side(s)
+            if (tree.right != null)
+            {
+                InOrderTraverse(tree.right, array);
+            }
+
+            array.Add(tree.value.GetValueOrDefault());
+
+            return array;
         }
     }
 }
