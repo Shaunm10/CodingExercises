@@ -17,7 +17,36 @@ public class Exercise
     */
     public static bool ValidateBst(BST tree)
     {
+        var isValid = true;
+
         // Write your code here.
-        return false;
+        if (tree.left != null)
+        {
+            if (tree.left.value > tree.value)
+            {
+                isValid = false;
+            }
+
+            if (!ValidateBst(tree.left))
+            {
+                isValid = false;
+            }
+
+        }
+
+        if (tree.right != null)
+        {
+            if (tree.right.value < tree.value)
+            {
+                isValid = false;
+            }
+
+            if (!ValidateBst(tree.right))
+            {
+                isValid = false;
+            }
+
+        }
+        return isValid;
     }
 }

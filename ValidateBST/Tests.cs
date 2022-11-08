@@ -12,17 +12,42 @@ public class Tests
             value = 10,
             left = new BST
             {
-                value = 5
+                value = 5,
+                left = new BST
+                {
+                    value = 2,
+                    left = new BST
+                    {
+                        value = 1
+                    }
+                },
+                right = new BST
+                {
+                    value = 5
+                }
             },
             right = new BST
             {
-                value= 15
+                value = 15,
+                right = new BST
+                {
+                    value = 22
+                },
+                left = new BST
+                {
+                    value = 13,
+                    right = new BST
+                    {
+                        value = 14
+                    }
+                }
             }
         };
 
-
         // act:
+        var result = Exercise.ValidateBst(root);
 
         // assert:
+        result.Should().Be(true);
     }
 }
