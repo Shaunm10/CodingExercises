@@ -10,4 +10,9 @@ public class BST
     {
         this.value = value;
     }
+
+    public BST()
+    {
+
+    }
 }
