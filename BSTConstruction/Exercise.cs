@@ -25,8 +25,8 @@ BST nodes themselves or None / null.
 public class BST
 {
     public int value;
-    public BST left;
-    public BST right;
+    public BST? left;
+    public BST? right;
 
     public BST(int value)
     {

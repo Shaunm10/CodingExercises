@@ -17,7 +17,23 @@ public class Exercise
     */
     public static bool ValidateBst(BST tree)
     {
+        return ValidateBst(tree, Int32.MinValue, Int32.MaxValue);
+    }
+
+    internal static bool ValidateBst(BST tree, int floor, int ceiling)
+    {
         var isValid = true;
+
+        if (tree.value > ceiling)
+        {
+            isValid = false;
+        }
+
+        if (tree.value < floor)
+        {
+            isValid = false;
+        }
+
 
         // Write your code here.
         if (tree.left != null)
@@ -26,12 +42,12 @@ public class Exercise
             {
                 isValid = false;
             }
+            var newCeiling = Math.Min(tree.value, ceiling);
 
-            if (!ValidateBst(tree.left))
+            if (!ValidateBst(tree.left, floor, newCeiling))
             {
                 isValid = false;
             }
-
         }
 
         if (tree.right != null)
@@ -41,7 +57,9 @@ public class Exercise
                 isValid = false;
             }
 
-            if (!ValidateBst(tree.right))
+            var newFloor = Math.Max(tree.value, floor);
+
+            if (!ValidateBst(tree.right, newFloor, ceiling))
             {
                 isValid = false;
             }
@@ -49,4 +67,5 @@ public class Exercise
         }
         return isValid;
     }
+
 }
