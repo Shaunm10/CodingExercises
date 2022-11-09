@@ -36,7 +36,7 @@ namespace CodingExercises.BSTTraversal
             }
 
             // add this item
-            array.Add(tree.value.GetValueOrDefault());
+            array.Add(tree.value);
 
             // add the right side(s)
             if (tree.right != null)
@@ -57,7 +57,7 @@ namespace CodingExercises.BSTTraversal
         public static List<int> PreOrderTraverse(BST tree, List<int> array)
         {
             // add this item
-            array.Add(tree.value.GetValueOrDefault());
+            array.Add(tree.value);
 
             // add the left(s)
             if (tree.left != null)
@@ -94,7 +94,7 @@ namespace CodingExercises.BSTTraversal
                 InOrderTraverse(tree.right, array);
             }
 
-            array.Add(tree.value.GetValueOrDefault());
+            array.Add(tree.value);
 
             return array;
         }

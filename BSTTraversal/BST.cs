@@ -1,16 +1,19 @@
 namespace CodingExercises.BSTTraversal
 {
-   public class BST {
-		public int? value;
-		public BST? left;
-		public BST? right;
+    public class BST
+    {
+        public int value;
+        public BST? left;
+        public BST? right;
 
-		public BST(int value) {
-			this.value = value;
-		}
+        public BST(int value)
+        {
+            this.value = value;
+        }
 
-        public BST() {
-		
-		}
-	}
+        public BST()
+        {
+            value = 0;
+        }
+    }
 }
