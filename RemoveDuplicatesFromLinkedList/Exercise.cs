@@ -19,7 +19,7 @@ namespace CodingExercises.RemoveDuplicatesFromLinkedList
             var currentNode = linkedList;
 
             // to keep track of previous nodes as we process them.
-            LinkedList previousNode = null;
+            LinkedList? previousNode = null;
 
             while (currentNode != null)
             {
@@ -27,7 +27,10 @@ namespace CodingExercises.RemoveDuplicatesFromLinkedList
                 if (set.Contains(currentNode.value))
                 {
                     var nextNode = currentNode.next;
-                    previousNode.next = nextNode;
+                    if (previousNode != null)
+                    {
+                        previousNode.next = nextNode;
+                    }
 
                     currentNode = previousNode;
                 }
@@ -41,7 +44,7 @@ namespace CodingExercises.RemoveDuplicatesFromLinkedList
                 previousNode = currentNode;
 
                 // set up for the next iteration.
-                currentNode = currentNode.next;
+                currentNode = currentNode?.next;
 
             }
 

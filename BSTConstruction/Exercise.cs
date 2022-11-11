@@ -92,7 +92,7 @@ public class BST
         }
     }
 
-    public BST Remove(int value)
+    public BST? Remove(int value)
     {
         // if the value being removed is larger than this node's value.
         if (this.value < value)
@@ -131,7 +131,7 @@ public class BST
             }
 
             // 2 children
-            var minValue = this.right.GetMinValue();
+            var minValue = this.right!.GetMinValue();
             this.value = minValue;
             this.right = this.right.Remove(minValue);
         }
