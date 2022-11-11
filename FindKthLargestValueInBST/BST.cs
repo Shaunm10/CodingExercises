@@ -10,5 +10,9 @@ namespace CodingExercises.FindKthLargestValueInBST
         {
             this.value = value;
         }
+        public BST()
+        {
+            this.value = 0;
+        }
     }
 }
