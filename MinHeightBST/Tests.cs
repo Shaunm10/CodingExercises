@@ -2,6 +2,7 @@ namespace CodingExercises.MinHeightBST
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
