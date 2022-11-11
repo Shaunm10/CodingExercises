@@ -62,13 +62,13 @@ namespace CodingExercises.BSTTraversal
             // add the left(s)
             if (tree.left != null)
             {
-                InOrderTraverse(tree.left, array);
+                PreOrderTraverse(tree.left, array);
             }
 
             // add the right side(s)
             if (tree.right != null)
             {
-                InOrderTraverse(tree.right, array);
+                PreOrderTraverse(tree.right, array);
             }
 
             return array;
@@ -85,13 +85,13 @@ namespace CodingExercises.BSTTraversal
             // add the left(s)
             if (tree.left != null)
             {
-                InOrderTraverse(tree.left, array);
+                PostOrderTraverse(tree.left, array);
             }
 
             // add the right side(s)
             if (tree.right != null)
             {
-                InOrderTraverse(tree.right, array);
+                PostOrderTraverse(tree.right, array);
             }
 
             array.Add(tree.value);
