@@ -27,7 +27,21 @@ namespace CodingExercises.FindKthLargestValueInBST
         */
         public static int FindKthLargestValueInBst(BST tree, int k)
         {
-            // Write your code here.
+            if (tree.right != null)
+            {
+                return FindKthLargestValueInBst(tree.right, k);
+            }
+
+            if (k == 1)
+            {
+                return tree.value;
+            }
+            else
+            {
+                return FindKthLargestValueInBst(tree.left, k--);
+            }
+
+            // if we ran out of values.
             return -1;
         }
 
