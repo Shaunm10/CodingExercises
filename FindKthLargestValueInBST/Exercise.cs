@@ -27,23 +27,27 @@ namespace CodingExercises.FindKthLargestValueInBST
         */
         public static int FindKthLargestValueInBst(BST tree, int k)
         {
-            if (tree.right != null)
-            {
-                return FindKthLargestValueInBst(tree.right, k);
-            }
+            var list = new List<int>();
 
-            if (k == 1)
-            {
-                return tree.value;
-            }
-            else
-            {
-                return FindKthLargestValueInBst(tree.left, k--);
-            }
+            FindKthLargestValueInBst(tree, k, list);
 
-            // if we ran out of values.
-            return -1;
+            return list[k - 1];
         }
 
+        public static void FindKthLargestValueInBst(BST tree, int k, List<int> list = null)
+        {
+            if (tree.right != null)
+            {
+                FindKthLargestValueInBst(tree.right, k, list);
+            }
+
+            list.Add(tree.value);
+            // k--;
+
+            if (tree.left != null)
+            {
+                FindKthLargestValueInBst(tree.left, k, list);
+            }
+        }
     }
 }
