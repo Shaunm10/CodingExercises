@@ -29,8 +29,47 @@ public class Exercise
     nodes are either valid BST nodes themselves or None / null.
 
     */
-    public BST ReconstructBst(List<int> preOrderTraversalValues) {
-		// Write your code here.
-		return null;
-	}
+    public BST? ReconstructBst(List<int> preOrderTraversalValues)
+    {
+        var bst = new BST();
+        var listCount = preOrderTraversalValues.Count;
+
+        if (listCount > 0)
+        {
+            //Current node    
+            var currentValue = preOrderTraversalValues[0];
+            bst.value = currentValue;
+
+            if (listCount > 1)
+            {
+                var nextValue = preOrderTraversalValues[1];
+
+                if (nextValue <= currentValue)
+                {
+                    var indexOfNextLargest = preOrderTraversalValues.FindIndex(x => x > currentValue);
+                    var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
+
+                    // the number of items to take going right.
+                    var numberOfItemsGoingRight = listCount - indexOfNextLargest;
+                    var rightListToProcess = preOrderTraversalValues.GetRange(indexOfNextLargest, numberOfItemsGoingRight);
+
+                    // go left
+
+                    bst.left = ReconstructBst(leftListToProcess);
+                    bst.right = ReconstructBst(rightListToProcess);
+
+                }
+                else
+                {
+                    // only if the next value is less than it's parent.
+                    //Right subtree
+                    bst.right = ReconstructBst(preOrderTraversalValues.GetRange(1, listCount - 1));
+
+                }
+            }
+        }
+
+
+        return bst;
+    }
 }
