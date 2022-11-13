@@ -47,17 +47,20 @@ public class Exercise
                 if (nextValue <= currentValue)
                 {
                     var indexOfNextLargest = preOrderTraversalValues.FindIndex(x => x > currentValue);
-                    var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
+                    if (indexOfNextLargest != -1)
+                    {
 
-                    // the number of items to take going right.
-                    var numberOfItemsGoingRight = listCount - indexOfNextLargest;
-                    var rightListToProcess = preOrderTraversalValues.GetRange(indexOfNextLargest, numberOfItemsGoingRight);
+                        var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
 
-                    // go left
+                        // the number of items to take going right.
+                        var numberOfItemsGoingRight = listCount - indexOfNextLargest;
+                        var rightListToProcess = preOrderTraversalValues.GetRange(indexOfNextLargest, numberOfItemsGoingRight);
 
-                    bst.left = ReconstructBst(leftListToProcess);
-                    bst.right = ReconstructBst(rightListToProcess);
+                        // go left
 
+                        bst.left = ReconstructBst(leftListToProcess);
+                        bst.right = ReconstructBst(rightListToProcess);
+                    }
                 }
                 else
                 {
