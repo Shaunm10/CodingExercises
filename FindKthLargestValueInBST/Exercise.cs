@@ -1,3 +1,4 @@
+
 namespace CodingExercises.FindKthLargestValueInBST
 {
     public class Exercise
@@ -25,7 +26,7 @@ namespace CodingExercises.FindKthLargestValueInBST
         valid BST nodes themselves or None / null.
         
         */
-        public static int FindKthLargestValueInBst(BST tree, int k)
+        public int FindKthLargestValueInBst(BST tree, int k)
         {
             var list = new List<int>();
 
@@ -34,15 +35,21 @@ namespace CodingExercises.FindKthLargestValueInBST
             return list[k - 1];
         }
 
-        public static void FindKthLargestValueInBst(BST tree, int k, List<int> list = null)
+        private void FindKthLargestValueInBst(BST tree, int k, List<int> list)
         {
+            // if that was the last one, no reason to proceed.
+            if (k == 0)
+            {
+                return;
+            }
+            
             if (tree.right != null)
             {
                 FindKthLargestValueInBst(tree.right, k, list);
             }
 
             list.Add(tree.value);
-            // k--;
+            k--;
 
             if (tree.left != null)
             {

@@ -46,7 +46,7 @@ namespace CodingExercises.FindKthLargestValueInBST
             var expectedResult = 17;
 
             // act:
-            var response = Exercise.FindKthLargestValueInBst(rootBst, k);
+            var response = new Exercise().FindKthLargestValueInBst(rootBst, k);
 
             // assert:
             response.Should().Be(expectedResult);
