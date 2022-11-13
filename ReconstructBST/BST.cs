@@ -2,9 +2,9 @@ namespace CodingExercises.ReconstructBST;
 
 public class BST
 {
-    public int value;
-    public BST? left = null;
-    public BST? right = null;
+    public int value { get; set; }
+    public BST? left { get; set; } = null;
+    public BST? right { get; set; } = null;
 
     public BST(int value)
     {
