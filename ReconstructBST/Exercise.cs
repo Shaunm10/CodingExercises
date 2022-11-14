@@ -52,8 +52,17 @@ public class Exercise
                     // get the idex of the largest number bigger than the current item
                     var indexOfNextLargest = preOrderTraversalValues.FindIndex(x => x > currentValue);
 
-                    // get a list of all the items that are less than the current items we processed
-                    var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
+                    var leftListToProcess = new List<int>();
+
+                    if (indexOfNextLargest == -1)
+                    {
+                        leftListToProcess = preOrderTraversalValues.GetRange(1, listCount - 1);
+                    }
+                    else
+                    {
+                        // get a list of all the items that are less than the current items we processed
+                        leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
+                    }
 
                     // process the left branch from the current node
                     bst.left = ReconstructBst(leftListToProcess);
