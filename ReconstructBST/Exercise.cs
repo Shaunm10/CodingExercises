@@ -34,31 +34,39 @@ public class Exercise
         var bst = new BST();
         var listCount = preOrderTraversalValues.Count;
 
+        // if there are more items to process
         if (listCount > 0)
         {
             //Current node    
             var currentValue = preOrderTraversalValues[0];
             bst.value = currentValue;
 
+            // if there are items after this current item.
             if (listCount > 1)
             {
                 var nextValue = preOrderTraversalValues[1];
 
+                // if the next item is less than the current item we just processed.
                 if (nextValue <= currentValue)
                 {
+                    // get the idex of the largest number bigger than the current item
                     var indexOfNextLargest = preOrderTraversalValues.FindIndex(x => x > currentValue);
+
+                    // get a list of all the items that are less than the current items we processed
+                    var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
+
+                    // process the left branch from the current node
+                    bst.left = ReconstructBst(leftListToProcess);
+
+
                     if (indexOfNextLargest != -1)
                     {
-
-                        var leftListToProcess = preOrderTraversalValues.GetRange(1, indexOfNextLargest - 1);
-
                         // the number of items to take going right.
                         var numberOfItemsGoingRight = listCount - indexOfNextLargest;
                         var rightListToProcess = preOrderTraversalValues.GetRange(indexOfNextLargest, numberOfItemsGoingRight);
 
                         // go left
 
-                        bst.left = ReconstructBst(leftListToProcess);
                         bst.right = ReconstructBst(rightListToProcess);
                     }
                 }
