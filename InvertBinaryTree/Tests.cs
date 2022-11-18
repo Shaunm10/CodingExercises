@@ -43,8 +43,6 @@ namespace CodingExercises.InvertBinaryTree
                 }
             };
 
-
-
             // act:
             Exercise.InvertBinaryTree(binaryTree);
 
@@ -60,9 +58,6 @@ namespace CodingExercises.InvertBinaryTree
             binaryTree.right.right.value.Should().Be(4);
             binaryTree.right.right.left.value.Should().Be(9);
             binaryTree.right.right.right.value.Should().Be(8);
-
-
-
 
 
         }
