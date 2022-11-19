@@ -18,9 +18,10 @@ namespace CodingExercises.BinaryTreeDiameter
         can either be BinaryTree nodes themselves or None / null.
         */
 
-        public int BinaryTreeDiameter(BinaryTree tree) {
-		// Write your code here.
-		return -1;
-	}
+        public int BinaryTreeDiameter(BinaryTree tree)
+        {
+            // Write your code here.
+
+        }
     }
 }

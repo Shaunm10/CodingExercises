@@ -2,6 +2,7 @@ namespace CodingExercises.BinaryTreeDiameter
 {
     public class Tests
     {
+        [Fact]
         public void TestA()
         {
             // arrange:
@@ -48,8 +49,10 @@ namespace CodingExercises.BinaryTreeDiameter
             };
 
             // act:
+            var result = new Exercise().BinaryTreeDiameter(binaryTree);
 
             // assert:
+            result.Should().Be(expectedOutput);
         }
     }
 }
