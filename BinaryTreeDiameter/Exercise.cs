@@ -20,8 +20,26 @@ namespace CodingExercises.BinaryTreeDiameter
 
         public int BinaryTreeDiameter(BinaryTree tree)
         {
-            // Write your code here.
 
+            if (tree.left == null && tree.right == null)
+            {
+                return 1;
+            }
+
+            int? leftCount = null;
+            int? rightCount = null;
+
+            if (tree.left != null)
+            {
+                leftCount = BinaryTreeDiameter(tree.left) + 1;
+            }
+
+            if (tree.right != null)
+            {
+                rightCount = BinaryTreeDiameter(tree.right) + 1;
+            }
+
+            return Math.Max(leftCount.GetValueOrDefault(), rightCount.GetValueOrDefault());
         }
     }
 }
