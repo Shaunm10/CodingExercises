@@ -39,6 +39,11 @@ namespace CodingExercises.BinaryTreeDiameter
                 rightCount = BinaryTreeDiameter(tree.right) + 1;
             }
 
+            if (leftCount.HasValue && rightCount.HasValue)
+            {
+                return leftCount.Value + rightCount.Value;
+            }
+
             return Math.Max(leftCount.GetValueOrDefault(), rightCount.GetValueOrDefault());
         }
     }
