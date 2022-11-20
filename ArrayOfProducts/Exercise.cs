@@ -35,7 +35,7 @@ namespace CodingExercises.ArrayOfProducts
 
                 var aggregate = 1;
 
-                for (var j = 0; j < valuesOtherThanSubject.Count(); j++)
+                for (var j = 0; j < valuesOtherThanSubject.Length; j++)
                 {
                     var valueAtIndex = valuesOtherThanSubject[j];
                     aggregate = aggregate * valueAtIndex;
