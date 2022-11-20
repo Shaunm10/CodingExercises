@@ -12,7 +12,7 @@ namespace CodingExercises.BubbleSort
 
         public static int[] BubbleSort(int[] array)
         {
-            for (var outerIndex = 0; outerIndex < array.Count(); outerIndex++)
+            for (var outerIndex = 0; outerIndex < array.Length; outerIndex++)
             {
                 var wasSwapPerformed = false;
                 for (var innerIndex = 0; innerIndex + 1 < array.Count(); innerIndex++)
