@@ -20,31 +20,77 @@ namespace CodingExercises.BinaryTreeDiameter
 
         public int BinaryTreeDiameter(BinaryTree tree)
         {
+            var diameterInfo = CalculateBinaryTreeDiameter(tree);
 
+            return diameterInfo.Candidates.Append(diameterInfo.CurrentRunningLength).Max();
+        }
+
+        private DiameterInfo CalculateBinaryTreeDiameter(BinaryTree tree)
+        {
+
+            // this is a leaf
             if (tree.left == null && tree.right == null)
             {
-                return 1;
+                return new DiameterInfo();
             }
 
-            int? leftCount = null;
-            int? rightCount = null;
-
-            if (tree.left != null)
+            // this is a branching node.
+            else if (tree.left != null && tree.right != null)
             {
-                leftCount = BinaryTreeDiameter(tree.left) + 1;
+                var leftDiameterInfo = CalculateBinaryTreeDiameter(tree.left);
+                var rightDiameterInfo = CalculateBinaryTreeDiameter(tree.right);
+                leftDiameterInfo.CurrentRunningLength++;
+                rightDiameterInfo.CurrentRunningLength++;
+
+                var newCandidateList = new List<int>();
+                newCandidateList.AddRange(leftDiameterInfo.Candidates);
+                newCandidateList.AddRange(rightDiameterInfo.Candidates);
+
+                // now add this diameter
+                newCandidateList.Add(leftDiameterInfo.CurrentRunningLength + rightDiameterInfo.CurrentRunningLength);
+
+
+                return new DiameterInfo
+                {
+                    Candidates = newCandidateList,
+                    CurrentRunningLength = 0
+                };
             }
 
-            if (tree.right != null)
+            else if (tree.right != null)
             {
-                rightCount = BinaryTreeDiameter(tree.right) + 1;
-            }
+                var info = CalculateBinaryTreeDiameter(tree.right);
 
-            if (leftCount.HasValue && rightCount.HasValue)
+                // increment 
+                info.CurrentRunningLength++;
+
+                // return
+                return info;
+
+            }
+            else
             {
-                return leftCount.Value + rightCount.Value;
-            }
+                // finally this must only have a left
+                var info = CalculateBinaryTreeDiameter(tree.left);
 
-            return Math.Max(leftCount.GetValueOrDefault(), rightCount.GetValueOrDefault());
+                info.CurrentRunningLength++;
+
+                return info;
+            }
         }
+
+
     }
+    public class DiameterInfo
+    {
+        // public DiameterInfo()
+        // {
+        //     this.CurrentRunningLength = 0;
+        //     this.Candidates = new List<int>();
+        // }
+
+        public int CurrentRunningLength =0;
+        public List<int> Candidates = new List<int>();
+    }
+
 }
