@@ -1,58 +1,101 @@
-namespace CodingExercises.BinaryTreeDiameter
+namespace CodingExercises.BinaryTreeDiameter;
+
+public class Tests
 {
-    public class Tests
+    [Fact]
+    public void TestA()
     {
-        [Fact]
-        public void TestA()
+        // arrange:
+        // There are 6 edges between the
+        // first node and the last node
+        // of this tree's longest path.
+        // 9 -> 8 -> 7 -> 3 -> 4 -> 5 -> 6
+        var expectedOutput = 6;
+        var binaryTree = new BinaryTree
         {
-            // arrange:
-            // There are 6 edges between the
-            // first node and the last node
-            // of this tree's longest path.
-            // 9 -> 8 -> 7 -> 3 -> 4 -> 5 -> 6
-            var expectedOutput = 6;
-            var binaryTree = new BinaryTree
+            value = 1,
+            right = new BinaryTree
             {
-                value = 1,
+                value = 2
+            },
+            left = new BinaryTree
+            {
+                value = 3,
                 right = new BinaryTree
                 {
-                    value = 2
+                    value = 4,
+                    right = new BinaryTree
+                    {
+                        value = 5,
+                        right = new BinaryTree
+                        {
+                            value = 6
+                        }
+                    }
                 },
                 left = new BinaryTree
                 {
-                    value = 3,
-                    right = new BinaryTree
-                    {
-                        value = 4,
-                        right = new BinaryTree
-                        {
-                            value = 5,
-                            right = new BinaryTree
-                            {
-                                value = 6
-                            }
-                        }
-                    },
+                    value = 7,
                     left = new BinaryTree
                     {
-                        value = 7,
+                        value = 8,
                         left = new BinaryTree
                         {
-                            value = 8,
-                            left = new BinaryTree
-                            {
-                                value = 9
-                            }
+                            value = 9
                         }
                     }
                 }
-            };
+            }
+        };
 
-            // act:
-            var result = new Exercise().BinaryTreeDiameter(binaryTree);
+        // act:
+        var result = new Exercise().BinaryTreeDiameter(binaryTree);
 
-            // assert:
-            result.Should().Be(expectedOutput);
-        }
+        // assert:
+        result.Should().Be(expectedOutput);
     }
+
+    [Fact]
+    public void TestB()
+    {
+        // arrange:
+
+        var expectedOutput = 4;
+        var binaryTree = new BinaryTree
+        {
+            value = 1,
+            right = new BinaryTree
+            {
+                value = 3,
+                left = new BinaryTree
+                {
+                    value = 6,
+
+                },
+                right = new BinaryTree
+                {
+                    value = 7
+                }
+            },
+            left = new BinaryTree
+            {
+                value = 2,
+                left = new BinaryTree
+                {
+                    value = 4
+                },
+                right = new BinaryTree
+                {
+                    value = 5
+                }
+            }
+        };
+
+        // act:
+        var result = new Exercise().BinaryTreeDiameter(binaryTree);
+
+        // assert:
+        result.Should().Be(expectedOutput);
+    }
+
 }
