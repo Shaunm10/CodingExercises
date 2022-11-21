@@ -20,12 +20,66 @@ public class Exercise
     */
     public BinaryTree FindSuccessor(BinaryTree tree, BinaryTree node)
     {
-        return new BinaryTree();
+        if (node.left != null)
+        {
+            return node.left;
+        }
+
+        if(node.right != null)
+        {
+            return node.right;
+        }
+
+        return FindSuccessor(node.parent, node);
+
+    }
+
+    public FindSuccessorInfo FindSuccessor(BinaryTree tree, BinaryTree node, FindSuccessorInfo findSuccessorInfo)
+    {
+        // if the successor is already found
+        if (findSuccessorInfo.Successor != null)
+        {
+            // just return the info object.
+            return findSuccessorInfo;
+        }
+
+        if (findSuccessorInfo.TargetValueFound)
+        {
+            // than this is the successor
+            findSuccessorInfo.Successor = tree;
+        }
 
         // left
+        if (tree.left != null)
+        {
+            findSuccessorInfo = FindSuccessor(tree.left, node, findSuccessorInfo);
+        }
 
         // self
 
+        // if this is the value we are looking for
+        if (tree.value == node.value)
+        {
+            // record it so we know the next value is the successor.
+            findSuccessorInfo.TargetValueFound = true;
+        }
+
+
         // right
+
+
+        return findSuccessorInfo;
+    }
+}
+
+public class FindSuccessorInfo
+{
+    public bool TargetValueFound { get; set; }
+    public BinaryTree Successor { get; set; }
+
+    public FindSuccessorInfo()
+    {
+        this.TargetValueFound = false;
+        this.Successor = null;
     }
 }
