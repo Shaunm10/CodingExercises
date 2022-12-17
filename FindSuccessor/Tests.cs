@@ -25,7 +25,7 @@ namespace CodingExercises.FindSuccessor
             sixNode.parent = fourNode;
             fourNode.left = sixNode;
 
-            var fiveNode = new BinaryTree(6);
+            var fiveNode = new BinaryTree(5);
             fiveNode.parent = twoNode;
             twoNode.right = fiveNode;
 
@@ -39,7 +39,7 @@ namespace CodingExercises.FindSuccessor
             var result = new Exercise().FindSuccessor(rootTree, fiveNode);
 
             // assert:
-            result.Should().Be(expectedResult);
+            result.value.Should().Be(expectedResult);
 
         }
     }

@@ -18,21 +18,31 @@ public class Exercise
     a left child node, and a right child node. Children nodes 
     can either be BinaryTree nodes themselves or None / null.
     */
-    public BinaryTree FindSuccessor(BinaryTree tree, BinaryTree node)
+    public BinaryTree FindSuccessor(BinaryTree tree, BinaryTree node, bool initialSearch = true)
     {
-        if (node.left != null)
+        // go left
+        if (!initialSearch && node.left != null)
         {
-            return node.left;
+            return FindSuccessor(tree, node.left, false);
         }
 
-        if(node.right != null)
+        // this
+        if (!initialSearch)
         {
-            return node.right;
+            return node;
         }
 
-        return FindSuccessor(node.parent, node);
+        // go right
+        if (node.right != null)
+        {
+            return FindSuccessor(tree, node.right, false);
+        }
 
+        // up
+        return FindSuccessor(tree, node.parent, false);
     }
+
+
 
     public FindSuccessorInfo FindSuccessor(BinaryTree tree, BinaryTree node, FindSuccessorInfo findSuccessorInfo)
     {
